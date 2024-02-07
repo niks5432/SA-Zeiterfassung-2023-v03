@@ -1,6 +1,8 @@
 package Benutzer
 
+import javafx.stage.Stage
 import java.sql.DriverManager
+
 
 
 fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, nachnameNew: String, emailNew: String, funktionNew: String, admin: String) {

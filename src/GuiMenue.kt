@@ -5,6 +5,8 @@ import javafx.scene.control.Label
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
+var menueStage = Stage()
+
 object guiMenue {
 
     val buttonStart = Button("Zeiterfassung Starten")
@@ -28,16 +30,17 @@ object guiMenue {
                 )
             }
 
-            buttonStart.setOnAction {
+            buttonStart.setOnAction {}
+            buttonArchiv.setOnAction {}
+            buttonVisieren.setOnAction { }
+            buttonErstellen.setOnAction {
                 vbox.isVisible()
                 guiBenutzerErstellen.start(guiStage)}
-            buttonArchiv.setOnAction { /* Implementiere die Aktion für Zeiterfassung Archiv */ }
-            buttonVisieren.setOnAction { /* Implementiere die Aktion für Zeiterfassungen Visieren */ }
-            buttonErstellen.setOnAction { /* Implementiere die Aktion für Benutzer erstellen */ }
             buttonLogOut.setOnAction {
                 stage.close()
-                //showAlert("Sie wurden ausgeloggt.")
-                // Hier kannst du optional die main() Methode aufrufen oder andere Aktionen durchführen.
+                showLoginWindow()
+                angemeldet = false
+                println("Sie wurden Abgemeldet")
             }
 
             with(stage) {
@@ -46,6 +49,6 @@ object guiMenue {
                 show()
             }
         }
-
     }
+
 

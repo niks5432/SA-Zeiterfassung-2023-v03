@@ -14,6 +14,7 @@ import javafx.stage.Stage
 import javafx.stage.Window
 
 val guiStage = Stage() // Erstelle eine neue Stage
+var loginStage = Stage()
 
 class Gui : Application() {
 
@@ -21,9 +22,6 @@ class Gui : Application() {
     private val label = Label("")
     private val user = TextField()
     private val passwort = TextField()
-
-    private lateinit var loginStage: Stage
-
 
     override fun start(stage: Stage) {
         val box = VBox().apply {
@@ -65,8 +63,7 @@ class Gui : Application() {
             if (angemeldet) {
                 println("Menue wird ausgeführt")
                 guiMenue.start(guiStage)
-                loginStage = stage
-                loginStage.close()
+                stage.close()
             }
         }
 
@@ -78,6 +75,11 @@ class Gui : Application() {
             show()
         }
     }
+}
+
+fun showLoginWindow() {
+    val loginGui = Gui()
+    loginGui.start(loginStage)
 }
 
 fun exit() {

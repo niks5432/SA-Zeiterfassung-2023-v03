@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
 
+var benutzerStage = Stage()
+
 object  guiBenutzerErstellen {
     val newUserid = 0
     private val newUserPassword = TextField()
