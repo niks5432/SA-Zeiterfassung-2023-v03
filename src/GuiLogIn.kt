@@ -1,27 +1,22 @@
+import GuiMenueAdmin.guiStage
 import LogIn.logInAbfrage
-import com.sun.javafx.tk.quantum.WindowStage
+import com.sun.javafx.application.PlatformImpl.exit
 import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.Scene
-import javafx.scene.control.Alert
-import javafx.scene.control.Button
-import javafx.scene.control.Label
-import javafx.scene.control.TextField
+import javafx.scene.control.*
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
-import javafx.stage.Window
 
-val guiStage = Stage() // Erstelle eine neue Stage
-var loginStage = Stage()
+class GuiLogIn : Application() {
 
-class Gui : Application() {
 
     private val buttonLogIn = Button("Log In")
     private val label = Label("")
     private val user = TextField()
-    private val passwort = TextField()
+    private val passwort = PasswordField()
 
     override fun start(stage: Stage) {
         val box = VBox().apply {
@@ -40,7 +35,8 @@ class Gui : Application() {
                 add(label).apply {
                     label.font = Font.font(16.0,)
                     label.style  = "-fx-font-weight: bold"
-                    label.padding = Insets(-40.0, 0.0, 0.0, 0.0)}
+                    label.padding = Insets(-40.0, 0.0, 0.0, 0.0)
+                }
                 add(user).apply {
                     user.maxWidth = 210.0
                     user.promptText = "Bitte den Benutzernamen Eingeben"
@@ -62,7 +58,7 @@ class Gui : Application() {
             println(angemeldet)
             if (angemeldet) {
                 println("Menue wird ausgeführt")
-                guiMenue.start(guiStage)
+                GuiMenueAdmin.start(guiStage)
                 stage.close()
             }
         }
@@ -75,16 +71,10 @@ class Gui : Application() {
             show()
         }
     }
+
+
+
 }
 
-fun showLoginWindow() {
-    val loginGui = Gui()
-    loginGui.start(loginStage)
-}
 
-fun exit() {
-    with(Alert(Alert.AlertType.INFORMATION)) {
-        contentText = "App wird geschlossen..."
-        showAndWait()
-    }
-}
+

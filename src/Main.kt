@@ -11,11 +11,13 @@ var vorname = ""
 var nachname = ""
 var email = ""
 var funktion = ""
-var admin = ""
+var admin = false
 var angemeldet = false
+
+
 fun main() {
     println("Hello World!")
-    Application.launch(Gui::class.java)
+    Application.launch(GuiLogIn::class.java)
 
 }
 

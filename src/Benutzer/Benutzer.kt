@@ -30,7 +30,7 @@ class Benutzer {
         print("Admin: ")
         newAdmin = readln()
 
-        eintragBenutzerDb(newUserid, newVorname, newNachname, newPasswort, newEmail, newFunktion, newAdmin)
+//        eintragBenutzerDb(newUserid, newVorname, newNachname, newPasswort, newEmail, newFunktion, newAdmin)
     }
 }
 

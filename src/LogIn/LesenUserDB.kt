@@ -52,7 +52,7 @@ fun LesenUserDB(user: String) : String {
         nachname = data.getString("nachname")
         email = data.getString("email")
         funktion = data.getString("funktion")
-        admin = data.getString("admin")
+        admin = data.getString("admin").toBoolean()
 
     //        println("Zeile: $userId | $passwort | $vorname | $nachname | $email | $funktion")         // Kontrolle Ausgabe
     }

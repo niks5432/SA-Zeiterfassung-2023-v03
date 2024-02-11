@@ -6,10 +6,8 @@ package LogIn
  * Autor: Nikola Djukic
  */
 
-import menue
 import splitString
 import userDaten
-import admin
 import angemeldet
 
 class LogIn {

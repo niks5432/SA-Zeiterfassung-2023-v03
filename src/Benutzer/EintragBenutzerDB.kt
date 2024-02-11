@@ -5,7 +5,7 @@ import java.sql.DriverManager
 
 
 
-fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, nachnameNew: String, emailNew: String, funktionNew: String, admin: String) {
+fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, nachnameNew: String, emailNew: String, funktionNew: String, admin: Boolean) {
 
 // Database connection parameters
     val PROTOCOL = "jdbc:mysql"
@@ -31,14 +31,17 @@ fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, n
                      vorname,
                      nachname,
                      email,
-                     funktion)
+                     funktion,
+                     admin)
                  VALUES (
                      '$userIdNew',
                      '$passwortNew',
                      '$vornameNew',
                      '$nachnameNew',
                      '$emailNew',
-                     '$funktionNew'
+                     '$funktionNew',
+                     '$admin'
+
                  )"""
 
 // SQL ausführen

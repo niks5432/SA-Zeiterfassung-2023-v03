@@ -1,24 +1,25 @@
 package Benutzer
 
-import guiStage
+import Archiv.guiMenue
+import GuiMenueAdmin
+import GuiMenueAdmin.guiStage
 import javafx.geometry.Insets
-import javafx.scene.control.Button
-import javafx.scene.control.Label
-import javafx.scene.control.TextField
+import javafx.scene.control.*
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
 
-var benutzerStage = Stage()
 
-object  guiBenutzerErstellen {
-    val newUserid = 0
+object GuiBenutzerErstellen {
+    private val newUserid = 0
     private val newUserPassword = TextField()
     private val newVorname = TextField()
     private val newNachname = TextField()
     private val newEmail = TextField()
     private val newFunktion = TextField()
-    private val newAdmin = TextField()
+    private val adminRbn = RadioButton("Admin")
+
+    private val nonAdminRbn = RadioButton("kein Admin")
     private val buttonBenutzerErstellen = Button("Erstellen")
     private val buttonZurückMenue = Button("Menü")
 
@@ -31,21 +32,20 @@ object  guiBenutzerErstellen {
     private var newEmailLabel = Label("Bitte die E-Mail Adresse des neuen Benutzer Eingeben")
     private var newFunktionLabel = Label("Bitte die Funktion des neuen Benutzer Eingeben")
     private var newAdminLabel = Label("Bitte Admin eintrgane falls der neue Benutzer Admin Rechte erhalten soll")
+    private var rbnAdmIs = false
 
     fun start(stage: Stage) {
 
             val vbox = VBox().apply {
+
                 spacing = 10.0
                 padding = Insets(20.0, 15.0, 15.0, 10.0)
+
 
                 with(children) {
                     addAll(
                         titleLabel.apply {
                             font = Font.font(25.0)
-                            style = "-fx-font-weight: bold"
-                        },
-                        hinweisLabel.apply {
-                            font = Font.font(16.0)
                             style = "-fx-font-weight: bold"
                         },
                         newVornameLabel.apply {
@@ -86,9 +86,11 @@ object  guiBenutzerErstellen {
                         newAdminLabel.apply {
                             padding = Insets(0.0, 0.0, -5.0, 2.0)
                         },
-                        newAdmin.apply {
-                            maxWidth = 200.0
-                            promptText = "Admin"
+                        adminRbn.apply {
+
+                            },
+                        nonAdminRbn.apply {
+                                VBox.setMargin(this, Insets(-28.0, 0.0, 0.0, 90.0))
                         },
                         buttonBenutzerErstellen.apply {
                             prefWidth = 80.0
@@ -99,15 +101,29 @@ object  guiBenutzerErstellen {
                             VBox.setMargin(this, Insets(-35.0, 0.0, 0.0, 0.0))
                         }
                     )
+
                 }
+
+
+
+
             }
 
+        adminRbn.setOnAction {
+            eintageAdmin(adminRbn)
+        }
+
+        nonAdminRbn.setOnAction {
+            eintageAdmin(nonAdminRbn)
+        }
+
         buttonBenutzerErstellen.setOnAction {
-            eintragBenutzerDb(newUserid, newUserPassword.text, newVorname.text, newNachname.text, newEmail.text, newFunktion.text, newAdmin.text)
+            eintragBenutzerDb(newUserid, newUserPassword.text, newVorname.text, newNachname.text, newEmail.text, newFunktion.text, rbnAdmIs)
+            textTflReset()
         }
         buttonZurückMenue.setOnAction {
             vbox.isVisible()
-            guiMenue.start(guiStage)
+            GuiMenueAdmin.start(guiStage)
         }
 
 
@@ -118,5 +134,26 @@ object  guiBenutzerErstellen {
             }
         }
 
+    fun textTflReset() {
+        newUserPassword.text = ""
+        newVorname.text = ""
+        newNachname.text = ""
+        newEmail.text = ""
+        newFunktion.text = ""
+        nonAdminRbn.isSelected = false
+        adminRbn.isSelected = false
     }
 
+    private fun eintageAdmin(rbn: RadioButton) {
+        if (rbn == adminRbn && rbn.isSelected) {
+            nonAdminRbn.isSelected = false
+            println("Admin")
+            rbnAdmIs = true
+        } else if (rbn == nonAdminRbn && rbn.isSelected) {
+            adminRbn.isSelected = false
+            println("kein Admin")
+            rbnAdmIs = false
+        }
+    }
+
+}
