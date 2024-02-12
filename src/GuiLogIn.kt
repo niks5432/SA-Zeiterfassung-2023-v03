@@ -12,7 +12,6 @@ import javafx.stage.Stage
 
 class GuiLogIn : Application() {
 
-
     private val buttonLogIn = Button("Log In")
     private val label = Label("")
     private val user = TextField()
@@ -60,7 +59,11 @@ class GuiLogIn : Application() {
                 println("Menue wird ausgeführt")
                 GuiMenueAdmin.start(guiStage)
                 stage.close()
+            } else {
+                falscheAngaben()
+
             }
+
         }
 
 
@@ -72,8 +75,14 @@ class GuiLogIn : Application() {
         }
     }
 
+    fun falscheAngaben() {
+        with(Alert(Alert.AlertType.INFORMATION)) {
+            contentText = "Falsche Benutzer Daten \n" +
+                          "Bitte nochmal eingeben"
+            showAndWait()
+        }
 
-
+    }
 }
 
 

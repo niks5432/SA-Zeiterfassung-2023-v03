@@ -16,7 +16,7 @@ class LogIn {
     var userpasswort = ""
 
     fun logIn() {
-        do {
+//        do {
             var schleifenEndeLogIn   = false
             userDaten = LesenUserDB(user)
             val userDatenSplit = splitString(userDaten)                                                    // Splitet den String userDaten nach Abstand und speichert es in Liste userDaten Split
@@ -35,6 +35,6 @@ class LogIn {
             } else {
                 println("Falscher Benutzername")
             }
-        } while (!schleifenEndeLogIn)                             //Bedingung damit Schleife weiter geführt wird
+//        } while (!schleifenEndeLogIn)                             //Bedingung damit Schleife weiter geführt wird
     }
 }
