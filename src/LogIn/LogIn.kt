@@ -6,9 +6,11 @@ package LogIn
  * Autor: Nikola Djukic
  */
 
+import GuiLogIn
 import splitString
 import userDaten
 import angemeldet
+import javafx.stage.Stage
 
 class LogIn {
 
@@ -37,4 +39,5 @@ class LogIn {
             }
 //        } while (!schleifenEndeLogIn)                             //Bedingung damit Schleife weiter geführt wird
     }
+
 }

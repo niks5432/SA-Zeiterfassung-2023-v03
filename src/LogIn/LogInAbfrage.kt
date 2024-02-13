@@ -1,5 +1,8 @@
 package LogIn
 
+import GuiLogIn
+import angemeldet
+import javafx.stage.Stage
 import userDaten
 import vorname
 import nachname
@@ -13,6 +16,11 @@ fun logInAbfrage(user: String, userpasswort: String) {
     println("Bitte Passwort eingeben")
     currentUser.userpasswort = userpasswort
 
-    currentUser.logIn()
-
 }
+
+//fun logInFenster() {
+//    val loginStage = Stage()
+//    val loginGui = GuiLogIn()
+//    loginGui.start(loginStage)
+//}
+

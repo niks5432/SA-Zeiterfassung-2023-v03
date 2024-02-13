@@ -1,4 +1,6 @@
 import Benutzer.GuiBenutzerErstellen
+import LogIn.LogIn
+import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.scene.control.Button
@@ -8,6 +10,8 @@ import javafx.scene.control.TextArea
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
+import LogIn.logInAbfrage
+import LogIn.logInFenster
 
 object GuiMenueAdmin {
 
@@ -36,36 +40,28 @@ object GuiMenueAdmin {
             )
         }
 
-        ausgabeFenster.apply {
-            isEditable = false
-            promptText = "Programm Ausgabe"
-        }
+        val ausgabeFenster = AusgabeFenster(vbox)
+        ausgabeFenster.ausgabeFensterAnzeigen()
 
-        splitPane.apply {
-            orientation = Orientation.HORIZONTAL
-            items.addAll(vbox, ausgabeFenster)
-            setDividerPositions(0.6) // Set initial divider position
-        }
-
-        val root = BorderPane()     // ohne SplitPane kann besser zentriert werden und man kan die grösse der Fenster ver$ndern
-        root.right = splitPane
-
+        val rootBorder = ausgabeFenster.root
 
         buttonStart.setOnAction {}
         buttonArchiv.setOnAction {}
         buttonVisieren.setOnAction { }
         buttonErstellen.setOnAction {
-            vbox.isVisible()
+            rootBorder.isVisible
             GuiBenutzerErstellen.start(guiStage)}
         buttonLogOut.setOnAction {
             stage.close()
-            logInFenster()
+            val loginStage = Stage()
+            val loginGui = GuiLogIn()
+            loginGui.start(loginStage)
             angemeldet = false
             println("Sie wurden Abgemeldet")
         }
 
         with(stage) {
-            scene = javafx.scene.Scene(root, 700.0, 500.0)
+            scene = javafx.scene.Scene(rootBorder, 700.0, 500.0)
             title = "Zeiterfassung"
             show()
         }

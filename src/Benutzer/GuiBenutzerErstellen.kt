@@ -1,6 +1,7 @@
 package Benutzer
 
 import Archiv.guiMenue
+import AusgabeFenster
 import GuiMenueAdmin
 import GuiMenueAdmin.guiStage
 import javafx.geometry.Insets
@@ -103,11 +104,12 @@ object GuiBenutzerErstellen {
                     )
 
                 }
-
-
-
-
             }
+
+        val ausgabeFenster = AusgabeFenster(vbox)
+        ausgabeFenster.ausgabeFensterAnzeigen()
+
+        val rootBorder = ausgabeFenster.root
 
         adminRbn.setOnAction {
             eintageAdmin(adminRbn)
@@ -122,13 +124,13 @@ object GuiBenutzerErstellen {
             textTflReset()
         }
         buttonZurückMenue.setOnAction {
-            vbox.isVisible()
+            rootBorder.isVisible
             GuiMenueAdmin.start(guiStage)
         }
 
 
             with(stage) {
-                scene = javafx.scene.Scene(vbox, 700.0, 500.0)
+                scene = javafx.scene.Scene(rootBorder, 700.0, 500.0)
                 title = "Zeiterfassung"
                 show()
             }
