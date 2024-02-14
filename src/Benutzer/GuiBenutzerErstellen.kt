@@ -1,10 +1,9 @@
 package Benutzer
 
-import Archiv.guiMenue
 import AusgabeFenster
 import GuiMenueAdmin
-import GuiMenueAdmin.guiStage
 import javafx.geometry.Insets
+import javafx.geometry.Orientation
 import javafx.scene.control.*
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
@@ -37,12 +36,11 @@ object GuiBenutzerErstellen {
 
     fun start(stage: Stage) {
 
-            val vbox = VBox().apply {
-
+        val splitPane = SplitPane()
+        val ausgabeFenster = AusgabeFenster()
+        val vbox = VBox().apply {
                 spacing = 10.0
                 padding = Insets(20.0, 15.0, 15.0, 10.0)
-
-
                 with(children) {
                     addAll(
                         titleLabel.apply {
@@ -106,10 +104,12 @@ object GuiBenutzerErstellen {
                 }
             }
 
-        val ausgabeFenster = AusgabeFenster(vbox)
-        ausgabeFenster.ausgabeFensterAnzeigen()
 
-        val rootBorder = ausgabeFenster.root
+        splitPane.apply {
+            orientation = Orientation.HORIZONTAL
+            items.addAll(vbox, ausgabeFenster.vbox)
+            setDividerPositions(0.605) // Set initial divider position
+        }
 
         adminRbn.setOnAction {
             eintageAdmin(adminRbn)
@@ -124,13 +124,13 @@ object GuiBenutzerErstellen {
             textTflReset()
         }
         buttonZurückMenue.setOnAction {
-            rootBorder.isVisible
-            GuiMenueAdmin.start(guiStage)
+            stage.close()
+            val guiMenueAdmin = GuiMenueAdmin()
+            guiMenueAdmin.start(stage)
         }
 
-
             with(stage) {
-                scene = javafx.scene.Scene(rootBorder, 700.0, 500.0)
+                scene = javafx.scene.Scene(splitPane, 700.0, 500.0)
                 title = "Zeiterfassung"
                 show()
             }

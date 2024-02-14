@@ -16,6 +16,7 @@ fun logInAbfrage(user: String, userpasswort: String) {
     println("Bitte Passwort eingeben")
     currentUser.userpasswort = userpasswort
 
+    currentUser.logIn()
 }
 
 //fun logInFenster() {

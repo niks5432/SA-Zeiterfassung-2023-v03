@@ -1,4 +1,3 @@
-import GuiMenueAdmin.guiStage
 import LogIn.logInAbfrage
 import com.sun.javafx.application.PlatformImpl.exit
 import javafx.application.Application
@@ -11,7 +10,7 @@ import javafx.scene.text.Font
 import javafx.stage.Stage
 
 class GuiLogIn : Application() {
-
+    val guiLogInStage = Stage()
     private val buttonLogIn = Button("Log In")
     private val label = Label("")
     private val user = TextField()
@@ -23,16 +22,11 @@ class GuiLogIn : Application() {
             padding = Insets(20.0)
             alignment = Pos.CENTER
 
-            label.text = "Herzlich Wilkommen im Zeiterfassungs programm"
-
-//            user.maxHeight = 50.0
-//            user.prefHeight = 10.0
-//            user.prefWidth  = 150.0
-//            user.setPrefSize(10.0, 100.0)
+            label.text = "Herzlich Wilkommen im Zeiterfassungs Programm"
 
             with(children) {
                 add(label).apply {
-                    label.font = Font.font(16.0,)
+                    label.font = Font.font(20.0,)
                     label.style  = "-fx-font-weight: bold"
                     label.padding = Insets(-40.0, 0.0, 0.0, 0.0)
                 }
@@ -57,7 +51,9 @@ class GuiLogIn : Application() {
             println(angemeldet)
             if (angemeldet) {
                 println("Menue wird ausgeführt")
-                GuiMenueAdmin.start(guiStage)
+                val guiMenueAdminStage = Stage()
+                val guiMenueAdmin = GuiMenueAdmin()
+                guiMenueAdmin.start(guiMenueAdminStage)
                 stage.close()
             } else {
                 falscheAngaben()
