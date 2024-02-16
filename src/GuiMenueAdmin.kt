@@ -13,17 +13,20 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
 
-class GuiMenueAdmin {
+open class GuiMenueAdmin {
 
     val splitPane = SplitPane()
-    val ausgabeFenster = TextArea()
 
-    val buttonStart = Button("Zeitmessung")
+    val buttonZeitmessung = Button("Zeitmessung")
     val buttonArchiv = Button("Stunden Archiv")
     val buttonVisieren = Button("Zeiten Visieren")
     val buttonErstellen = Button("Benutzer erstellen")
     val buttonLogOut = Button("Log Out")
-    fun start(stage: Stage) {
+    val ausgabeFenster = AusgabeFenster()
+
+    open fun start(stage: Stage) {
+
+//        ausgabeFenster.ausgabeTextHinzufügen("Hallo", 0)
 
             val vbox = VBox().apply {
                 spacing = 30.0
@@ -39,7 +42,7 @@ class GuiMenueAdmin {
                         style = "-fx-font-weight: bold"
                         VBox.setMargin(this, Insets(-20.0, 0.0, 0.0, 35.0))
                     },
-                    buttonStart.apply {
+                    buttonZeitmessung.apply {
                         prefWidth = 120.0
                     },
                     buttonArchiv.apply {
@@ -57,37 +60,34 @@ class GuiMenueAdmin {
                 )
             }
 
-
-
-            val ausgabeFenster = AusgabeFenster()
+        ausgabeFenster.ausgabeFensterAnzeigen()
 
         splitPane.apply {
             orientation = Orientation.HORIZONTAL
             items.addAll(vbox, ausgabeFenster.vbox)
-            setDividerPositions(0.4) // Set initial divider position
+            setDividerPositions(0.3) // Set initial divider position
         }
 
-            buttonStart.setOnAction {
-                stage.close()
-                val guiZeitStage = Stage()
-                GuiZeit.start(guiZeitStage)
-            }
+        buttonZeitmessung.setOnAction {
+            stage.close()
+            GuiZeit.start(stage)
+        }
+
             buttonArchiv.setOnAction {}
             buttonVisieren.setOnAction { }
             buttonErstellen.setOnAction {
                 stage.close()
                 GuiBenutzerErstellen.start(stage)
+
             }
             buttonLogOut.setOnAction {
-                val loginStage = Stage()
-                val loginGui = GuiLogIn()
-                loginGui.start(loginStage)
                 angemeldet = false
+                zustandZeitmessung = 0
                 println("Sie wurden Abgemeldet")
                 stage.close()
+                val loginGui = GuiLogIn()
+                loginGui.start(stage)
             }
-
-
 
             with(stage) {
                 scene = javafx.scene.Scene(splitPane, 700.0, 500.0)
@@ -95,5 +95,4 @@ class GuiMenueAdmin {
                 show()
             }
         }
-
 }

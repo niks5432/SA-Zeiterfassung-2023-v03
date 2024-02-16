@@ -37,7 +37,7 @@ class GuiLogIn : Application() {
                 }
                 add(passwort).apply {
                     passwort.maxWidth = 210.0
-                    passwort.promptText = "Bitte den Passwort Eingeben"
+                    passwort.promptText = "Bitte das Passwort Eingeben"
                     passwort.alignment = Pos.CENTER}
 
                 add(buttonLogIn)
@@ -51,10 +51,10 @@ class GuiLogIn : Application() {
             println(angemeldet)
             if (angemeldet) {
                 println("Menue wird ausgeführt")
+                stage.close()
                 val guiMenueAdminStage = Stage()
                 val guiMenueAdmin = GuiMenueAdmin()
                 guiMenueAdmin.start(guiMenueAdminStage)
-                stage.close()
             } else {
                 falscheAngaben()
 

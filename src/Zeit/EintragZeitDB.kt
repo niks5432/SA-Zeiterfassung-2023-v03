@@ -70,9 +70,6 @@ fun eintragZeitDB(userId: Int, startzeit: LocalTime, endzeit: LocalTime, pausenz
     statement.executeUpdate(sql)
     println("Daten in DB gespeichert.")
 
-    val data = statement.executeQuery(sql)
-    var startzeit = LocalTime.now()
-    var endzeit = LocalTime.now()
 
 
 // Zeilen ausgeben

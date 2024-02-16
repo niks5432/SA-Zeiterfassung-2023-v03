@@ -4,7 +4,7 @@ import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
 
-var userDaten = " "
+var userDaten = ""
 var userIdString = ""
 var passwort = ""
 var vorname = ""
@@ -13,6 +13,8 @@ var email = ""
 var funktion = ""
 var admin = false
 var angemeldet = false
+var zustandZeitmessung = 0
+
 
 
 fun main() {

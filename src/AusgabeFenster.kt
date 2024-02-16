@@ -7,11 +7,10 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
-class AusgabeFenster() {
+open class AusgabeFenster() {
 
     val root = BorderPane()     // ohne SplitPane kann besser zentriert werden und man kan die grösse der Fenster ver$ndern
 
-    val splitPane = SplitPane()
     val ausgabeFenster = TextArea()
     var vbox = VBox()
 
@@ -23,17 +22,23 @@ class AusgabeFenster() {
 
         vbox = VBox().apply {
             spacing = 10.0
-//            padding = Insets(20.0, 15.0, 15.0, 10.0)
+            padding = Insets(20.0, 15.0, 15.0, 10.0)
             children.addAll(
                 ausgabeFenster
             )
         }
-//        splitPane.apply {
-//            orientation = Orientation.HORIZONTAL
-//            items.addAll(vbox, ausgabeFenster)
-//            setDividerPositions(0.4) // Set initial divider position
-//        }
 
-        root.right = splitPane
     }
+
+    fun ausgabeTextHinzufügen(text: String, zeile: Int): Int {
+        ausgabeFenster.appendText("$text \n")
+        val aktuellezeile = zeile + 1
+        return aktuellezeile
+    }
+    open fun update(){
+        root.center = vbox
+
+
+    }
+
 }

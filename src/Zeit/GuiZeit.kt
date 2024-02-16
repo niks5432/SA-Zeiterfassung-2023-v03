@@ -1,9 +1,11 @@
 package Zeit
 
+import AusgabeFenster
 import Benutzer.GuiBenutzerErstellen
 import Benutzer.eintragBenutzerDb
 import GuiLogIn
 import GuiMenueAdmin
+import LogIn.logInAbfrage
 import com.sun.javafx.application.PlatformImpl
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
@@ -12,20 +14,30 @@ import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.RadioButton
 import javafx.scene.control.SplitPane
+import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
+import zeiterfassungAbfrage
+import zustandZeitmessung
+import java.lang.Appendable
 
 object GuiZeit {
     private val btnStart = Button("Zeiterfassung Start")
     private val btnEnde = Button("Zeiterfassung Stopp")
     private val btnBack = Button("Ansicht Schliessen")
+    private val guiMenueAdmin = GuiMenueAdmin()
+      fun start(stage: Stage,) {
 
-    fun start(stage: Stage) {
 
         val splitPane = SplitPane()
-        val guiMenueAdmin = GuiMenueAdmin()
+
+
+
+
+
         guiMenueAdmin.start(stage)
+        guiMenueAdmin.ausgabeFenster.ausgabeTextHinzufügen("Menüpunkt: Zeitmessung", 0)
 
         val btnZeiterfassung = VBox().apply {
             spacing = 10.0
@@ -48,6 +60,24 @@ object GuiZeit {
             }
         }
 
+
+        btnStart.setOnAction {
+            zeiterfassungAbfrage(true)
+
+            }
+
+        btnEnde.setOnAction {
+            zeiterfassungAbfrage(false)
+
+        }
+
+        btnBack.setOnAction {
+            stage.close()
+            val guiMenueAdminStage = Stage()
+            val guiMenueAdmin = GuiMenueAdmin()
+            guiMenueAdmin.start(guiMenueAdminStage)
+        }
+
         splitPane.apply {
             orientation = Orientation.VERTICAL
             items.addAll(guiMenueAdmin.splitPane, btnZeiterfassung)
@@ -57,7 +87,7 @@ object GuiZeit {
         with(stage) {
             scene = Scene(splitPane, 700.0, 500.0)
             title = "Zeiterfassung"
-            setOnCloseRequest { PlatformImpl.exit() }
+//            setOnCloseRequest { PlatformImpl.exit() }
             show()
         }
     }
@@ -65,4 +95,7 @@ object GuiZeit {
 
     }
 
+    fun textWeitergabe(text: String, zeile: Int) {
+        guiMenueAdmin.ausgabeFenster.ausgabeTextHinzufügen(text, zeile)
+    }
 }
