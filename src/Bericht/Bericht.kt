@@ -6,8 +6,8 @@ class Bericht {
 
     fun berichteintrag() {
 
-        println("Bitte heutige Arbeit zusammenfassen")
-        bericht = readln()
+//        println("Bitte heutige Arbeit zusammenfassen")
+//        bericht = readln()
         eintragid = lesenEintragIdDB()
         EintragBerichgtDB(bericht, eintragid)
     }

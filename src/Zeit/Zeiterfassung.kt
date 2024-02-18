@@ -1,22 +1,22 @@
 import `- Archiv`.guiMenue
+import Bericht.GuiBericht
 import Bericht.berichteintragAbfrage
 import Zeit.GuiZeit
+import javafx.stage.Stage
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.LocalTime
 
-open class Zeiterfassung() {
+class Zeiterfassung() {
     val userid         = 0
     var startZeit      = LocalTime.now()
     var endZeit        = LocalTime.now()
     var pausenZeit     = LocalTime.now()
     var pausenzeitEnde = LocalTime.now()
-//     var buttonStart    = 0
 
     fun zeitEruieren(buttonStart: Int) {
         // Variablen Deklaration
         var userId = userIdString.toInt()
-        var aktuelleZeile = 0
 
             when (buttonStart) {
                 1 -> {
@@ -24,7 +24,7 @@ open class Zeiterfassung() {
                     startZeit = startZeit.withNano(0)
                     zustandZeitmessung ++
                     println("Startzeit $startZeit")
-                    GuiZeit.textWeitergabe("Startzeit: $startZeit")
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Startzeit: $startZeit")
 
                 }
 
@@ -33,7 +33,7 @@ open class Zeiterfassung() {
                     endZeit = endZeit.withNano(0)
                     zustandZeitmessung ++
                     println("Endzeit $endZeit")
-                    GuiZeit.textWeitergabe("Endzeit: $endZeit" )
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Endzeit: $endZeit" )
 
                 }
 
@@ -42,7 +42,7 @@ open class Zeiterfassung() {
                     pausenZeit = pausenZeit.withNano(0)
                     zustandZeitmessung ++
                     println("pausenzeitBeginn $pausenZeit")
-                    GuiZeit.textWeitergabe("Pause beginn: $pausenZeit" )
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Pause beginn: $pausenZeit" )
 
                 }
 
@@ -51,7 +51,7 @@ open class Zeiterfassung() {
                     pausenzeitEnde = pausenzeitEnde.withNano(0)
                     zustandZeitmessung ++
                     println("pausenzeitEnde $pausenzeitEnde")
-                    GuiZeit.textWeitergabe("Pause ende: $pausenzeitEnde" )
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Pause ende: $pausenzeitEnde" )
                 }
             }
 
@@ -68,9 +68,11 @@ open class Zeiterfassung() {
             println(zeiten)
 
             eintragZeitDB(userId, startZeit, endZeit, formatiereZeit(pausenZeit), zustandid = 1, abwesenheitsid = 4)
-            GuiZeit.textWeitergabe("Arbeitszeit: $arbeitsZeit | Pausenzeit: $pausenZeit" )
+            GuiAusgabeFenster.ausgabeTextHinzufügen("Arbeitszeit: $arbeitsZeit | Pausenzeit: $pausenZeit" )
 
-            berichteintragAbfrage()
+//            berichteintragAbfrage()
+            val stage = Stage()
+            GuiBericht.start(stage)
             zustandZeitmessung = 0
         }
     }
