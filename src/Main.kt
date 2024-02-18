@@ -15,8 +15,6 @@ var admin = false
 var angemeldet = false
 var zustandZeitmessung = 0
 
-
-
 fun main() {
     println("Hello World!")
     Application.launch(GuiLogIn::class.java)

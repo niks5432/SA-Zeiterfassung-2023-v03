@@ -2,6 +2,7 @@ import `- Archiv`.guiMenue
 import Benutzer.GuiBenutzerErstellen
 import LogIn.LogIn
 import Zeit.GuiZeit
+import ZeitArchiv.GuiZeitArchiv
 import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
@@ -87,7 +88,10 @@ class GuiMenueAdmin{
             }
         }
 
-            buttonArchiv.setOnAction {}
+            buttonArchiv.setOnAction {
+                stage.close()
+                GuiZeitArchiv.start(stage)
+            }
             buttonVisieren.setOnAction { }
             buttonErstellen.setOnAction {
 //                splitPane.isVisible

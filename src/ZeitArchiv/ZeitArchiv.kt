@@ -9,9 +9,9 @@ import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalTime
 class ZeitArchiv {
-     private val startDatumStr = ""
-     private val endDatumStr = ""
-     private val abfrageUserId = ""
+      var startDatumStr = ""
+      var endDatumStr = ""
+      var abfrageUserId = ""
     fun archiveAbfrage() {
 
 //        println("Geben Sie ein Startdatum im Format (yyyy-MM-dd) ein")
