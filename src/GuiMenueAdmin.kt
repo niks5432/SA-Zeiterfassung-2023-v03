@@ -1,22 +1,18 @@
-import `- Archiv`.guiMenue
 import Benutzer.GuiBenutzerErstellen
-import LogIn.LogIn
 import Zeit.GuiZeit
 import ZeitArchiv.GuiZeitArchiv
-import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.SplitPane
-import javafx.scene.control.TextArea
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
 
 class GuiMenueAdmin{
-
+    var root = BorderPane()
     val splitPane = SplitPane()
     val splitPaneZeitmessung = SplitPane()
     var vbox = VBox()
@@ -26,10 +22,10 @@ class GuiMenueAdmin{
     val buttonErstellen = Button("Benutzer erstellen")
     val buttonLogOut = Button("Log Out")
 
-    fun start(stage: Stage) {
+
+     fun start(stage: Stage){
 
 
-        val root = BorderPane()
 //        ausgabeFenster.ausgabeTextHinzufügen("Hallo", 0)
         vbox = VBox().apply {
             spacing = 30.0
@@ -62,30 +58,24 @@ class GuiMenueAdmin{
                     }
                 )
             }
-
-        val ausgabeFenster = AusgabeFenster()
-        ausgabeFenster.ausgabeFensterAnzeigen()
-        GuiZeit.start()
-        GuiZeit.btnZeiterfassung.isVisible = false
+         GuiZeit.btnZeitmessung()
+         GuiZeit.btnZeiterfassung.isVisible = false
+         GuiAusgabeFenster.ausgabeFensterAnzeigen()
 
         splitPane.apply {
             orientation = Orientation.HORIZONTAL
-            items.addAll(vbox, ausgabeFenster.vbox)
+            items.addAll(vbox, GuiAusgabeFenster.vbox)
         }
 
-        splitPaneZeitmessung.apply {
-            orientation = Orientation.VERTICAL
-            items.addAll( splitPane, GuiZeit.btnZeiterfassung)
+        root = BorderPane().apply {
+            left = vbox
+            right = GuiAusgabeFenster.vbox
+            bottom = GuiZeit.btnZeiterfassung
         }
-
 
         buttonZeitmessung.setOnAction {
             GuiZeit.btnZeiterfassung.isVisible = true
-            stage.setOnShown {
-                // Warte darauf, dass die Szene vollständig gerendert ist
-                // und ändere dann die Sichtbarkeit der Trennlinien
-
-            }
+            GuiZeit.wilkommen()
         }
 
             buttonArchiv.setOnAction {
@@ -94,9 +84,8 @@ class GuiMenueAdmin{
             }
             buttonVisieren.setOnAction { }
             buttonErstellen.setOnAction {
-//                splitPane.isVisible
+                stage.close()
                 GuiBenutzerErstellen.start(stage)
-
             }
             buttonLogOut.setOnAction {
                 angemeldet = false
@@ -107,18 +96,11 @@ class GuiMenueAdmin{
                 loginGui.start(stage)
             }
 
-
-
             with(stage) {
-                scene = javafx.scene.Scene(splitPaneZeitmessung, 700.0, 500.0)
-
+                scene = javafx.scene.Scene(root, 700.0, 500.0)
                 title = "Zeiterfassung"
                 show()
-
-
             }
 
-
-
-}
+    }
 }

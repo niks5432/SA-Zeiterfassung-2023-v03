@@ -1,7 +1,6 @@
 package Benutzer
 
-import `- Archiv`.guiMenue
-import AusgabeFenster
+import GuiAusgabeFenster
 import GuiMenueAdmin
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
@@ -38,7 +37,6 @@ object GuiBenutzerErstellen {
     fun start(stage: Stage) {
 
         val splitPane = SplitPane()
-        val ausgabeFenster = AusgabeFenster()
         val vbox = VBox().apply {
                 spacing = 10.0
                 padding = Insets(20.0, 15.0, 15.0, 10.0)
@@ -109,7 +107,7 @@ object GuiBenutzerErstellen {
 
         splitPane.apply {
             orientation = Orientation.HORIZONTAL
-            items.addAll(vbox, ausgabeFenster.vbox)
+            items.addAll(vbox, GuiAusgabeFenster.vbox)
             setDividerPositions(0.605) // Set initial divider position
         }
 

@@ -1,17 +1,11 @@
 import javafx.geometry.Insets
-import javafx.geometry.Orientation
-import javafx.scene.control.Label
-import javafx.scene.control.SplitPane
 import javafx.scene.control.TextArea
-import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
-import javafx.stage.Stage
 
-open class AusgabeFenster() {
+object GuiAusgabeFenster{
 
-//    val root = BorderPane()     // ohne SplitPane kann besser zentriert werden und man kan die grösse der Fenster ver$ndern
 
-    val ausgabeFenster = TextArea()
+    private val ausgabeFenster = TextArea()
     var vbox = VBox()
 
     fun ausgabeFensterAnzeigen() {
@@ -32,12 +26,9 @@ open class AusgabeFenster() {
 
     fun ausgabeTextHinzufügen(text: String) {
         ausgabeFenster.appendText("$text \n")
-
     }
-//    open fun update(){
-//        root.center = vbox
-//
-//
-//    }
+    fun clear(){
+        ausgabeFenster.clear()
+    }
 
 }
