@@ -1,5 +1,6 @@
 package ZeitArchiv
 
+import GuiAusgabeFenster
 import berechneArbeitstage
 import effektivearbeitsstundenamtag
 import formatiereZeitArchiv
@@ -56,6 +57,8 @@ class ZeitArchiv {
             formatiertearbeitsstundenperiode += arbeitsstundenperiode
             formatiertetotalArbeitszeit += ergebnis
             println("UserID: ${abfrageUserId.toInt()} | Datum: $datumelem | Startzeit: $startzeitelem | Endzeit: $endzeitelem | Vorname: $vornameelem | Über-/Minus-stunden: $ergebnisformatiert")
+            GuiAusgabeFenster.ausgabeTextHinzufügen("UserID: ${abfrageUserId.toInt()} | Datum: $datumelem | Startzeit: $startzeitelem | Endzeit: $endzeitelem | Vorname: $vornameelem | Über-/Minus-stunden: $ergebnisformatiert")
+
         }
 
         val endDatumParce = LocalDate.parse(endDatumStr)
@@ -78,6 +81,10 @@ class ZeitArchiv {
         if (arbeitZeit >= minimumArbeitszeit) {
             val formatiertetotalArbeitszeitanzeige = formatiereZeitArchiv(formatiertetotalArbeitszeit)
             val formatiertetotalArbeitszeitanzeige2 =formatiereZeitArchiv(formatiertearbeitsstundenperiode)
+
+            GuiAusgabeFenster.ausgabeTextHinzufügen("Gesamt Teoretische Minus/Überstunden: $formatiertetotalArbeitszeitanzeige ")
+            GuiAusgabeFenster.ausgabeTextHinzufügen("Anzahl Arbeitstagen $anzahlArbeitstage, Gesamtsollstunden: $totalSollStunden, Effektiv gearbeitete Stunden in dieser Periode: $formatiertetotalArbeitszeitanzeige2 ")
+
             println("Gesamt Teoretische Minus/Überstunden: $formatiertetotalArbeitszeitanzeige ")
             println("Anzahl Arbeitstagen $anzahlArbeitstage, Gesamtsollstunden: $totalSollStunden, Effektiv gearbeitete Stunden in dieser Periode: $formatiertetotalArbeitszeitanzeige2 ")
         }
