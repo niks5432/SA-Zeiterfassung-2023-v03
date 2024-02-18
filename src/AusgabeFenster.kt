@@ -9,7 +9,7 @@ import javafx.stage.Stage
 
 open class AusgabeFenster() {
 
-    val root = BorderPane()     // ohne SplitPane kann besser zentriert werden und man kan die grösse der Fenster ver$ndern
+//    val root = BorderPane()     // ohne SplitPane kann besser zentriert werden und man kan die grösse der Fenster ver$ndern
 
     val ausgabeFenster = TextArea()
     var vbox = VBox()
@@ -30,15 +30,14 @@ open class AusgabeFenster() {
 
     }
 
-    fun ausgabeTextHinzufügen(text: String, zeile: Int): Int {
+    fun ausgabeTextHinzufügen(text: String) {
         ausgabeFenster.appendText("$text \n")
-        val aktuellezeile = zeile + 1
-        return aktuellezeile
-    }
-    open fun update(){
-        root.center = vbox
-
 
     }
+//    open fun update(){
+//        root.center = vbox
+//
+//
+//    }
 
 }

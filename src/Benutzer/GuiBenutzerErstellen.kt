@@ -1,5 +1,6 @@
 package Benutzer
 
+import `- Archiv`.guiMenue
 import AusgabeFenster
 import GuiMenueAdmin
 import javafx.geometry.Insets
@@ -105,6 +106,7 @@ object GuiBenutzerErstellen {
             }
 
 
+
         splitPane.apply {
             orientation = Orientation.HORIZONTAL
             items.addAll(vbox, ausgabeFenster.vbox)
@@ -127,6 +129,7 @@ object GuiBenutzerErstellen {
             stage.close()
             val guiMenueAdmin = GuiMenueAdmin()
             guiMenueAdmin.start(stage)
+
         }
 
             with(stage) {

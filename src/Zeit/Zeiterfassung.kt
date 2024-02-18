@@ -24,7 +24,7 @@ open class Zeiterfassung() {
                     startZeit = startZeit.withNano(0)
                     zustandZeitmessung ++
                     println("Startzeit $startZeit")
-                    GuiZeit.textWeitergabe("Startzeit: $startZeit", 1 )
+                    GuiZeit.textWeitergabe("Startzeit: $startZeit")
 
                 }
 
@@ -33,6 +33,8 @@ open class Zeiterfassung() {
                     endZeit = endZeit.withNano(0)
                     zustandZeitmessung ++
                     println("Endzeit $endZeit")
+                    GuiZeit.textWeitergabe("Endzeit: $endZeit" )
+
                 }
 
                 2 -> {
@@ -40,6 +42,8 @@ open class Zeiterfassung() {
                     pausenZeit = pausenZeit.withNano(0)
                     zustandZeitmessung ++
                     println("pausenzeitBeginn $pausenZeit")
+                    GuiZeit.textWeitergabe("Pause beginn: $pausenZeit" )
+
                 }
 
                 3 -> {
@@ -47,6 +51,7 @@ open class Zeiterfassung() {
                     pausenzeitEnde = pausenzeitEnde.withNano(0)
                     zustandZeitmessung ++
                     println("pausenzeitEnde $pausenzeitEnde")
+                    GuiZeit.textWeitergabe("Pause ende: $pausenzeitEnde" )
                 }
             }
 
@@ -63,6 +68,7 @@ open class Zeiterfassung() {
             println(zeiten)
 
             eintragZeitDB(userId, startZeit, endZeit, formatiereZeit(pausenZeit), zustandid = 1, abwesenheitsid = 4)
+            GuiZeit.textWeitergabe("Arbeitszeit: $arbeitsZeit | Pausenzeit: $pausenZeit" )
 
             berichteintragAbfrage()
             zustandZeitmessung = 0

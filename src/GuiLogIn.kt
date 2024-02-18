@@ -54,7 +54,7 @@ class GuiLogIn : Application() {
                 stage.close()
                 val guiMenueAdminStage = Stage()
                 val guiMenueAdmin = GuiMenueAdmin()
-                guiMenueAdmin.start(guiMenueAdminStage)
+                guiMenueAdmin.start(stage)
             } else {
                 falscheAngaben()
 

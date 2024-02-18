@@ -6,6 +6,7 @@ import Benutzer.eintragBenutzerDb
 import GuiLogIn
 import GuiMenueAdmin
 import LogIn.logInAbfrage
+import SplitPlaneGenerator
 import com.sun.javafx.application.PlatformImpl
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
@@ -23,23 +24,22 @@ import zustandZeitmessung
 import java.lang.Appendable
 
 object GuiZeit {
-    private val btnStart = Button("Zeiterfassung Start")
-    private val btnEnde = Button("Zeiterfassung Stopp")
-    private val btnBack = Button("Ansicht Schliessen")
+    private val splitPane = SplitPane()
+    val btnStart = Button("Zeiterfassung Start")
+    val btnEnde = Button("Zeiterfassung Stopp")
+    val btnBack = Button("Ansicht Schliessen")
+    var btnZeiterfassung = VBox()
+    var firstCall = true
     private val guiMenueAdmin = GuiMenueAdmin()
-      fun start(stage: Stage,) {
+    private val ausgabeFenster = AusgabeFenster()
+    fun start() {
 
+        val root = BorderPane()
 
-        val splitPane = SplitPane()
+//        ausgabeFenster.ausgabeFensterAnzeigen()
+//        ausgabeFenster.ausgabeTextHinzufügen("Menüpunkt: Zeitmessung")
 
-
-
-
-
-        guiMenueAdmin.start(stage)
-        guiMenueAdmin.ausgabeFenster.ausgabeTextHinzufügen("Menüpunkt: Zeitmessung", 0)
-
-        val btnZeiterfassung = VBox().apply {
+        btnZeiterfassung = VBox().apply {
             spacing = 10.0
             padding = Insets(20.0, 15.0, 15.0, 10.0)
             with(children) {
@@ -54,7 +54,7 @@ object GuiZeit {
                     },
                     btnBack.apply {
                         prefWidth = 160.0
-                    VBox.setMargin(this, Insets(-35.0, 55.0, 0.0, 485.0))
+                        VBox.setMargin(this, Insets(-35.0, 55.0, 0.0, 485.0))
                     }
                 )
             }
@@ -64,7 +64,7 @@ object GuiZeit {
         btnStart.setOnAction {
             zeiterfassungAbfrage(true)
 
-            }
+        }
 
         btnEnde.setOnAction {
             zeiterfassungAbfrage(false)
@@ -72,30 +72,31 @@ object GuiZeit {
         }
 
         btnBack.setOnAction {
-            stage.close()
-            val guiMenueAdminStage = Stage()
-            val guiMenueAdmin = GuiMenueAdmin()
-            guiMenueAdmin.start(guiMenueAdminStage)
+//            stage.close()
+//            guiMenueAdminStage.close()
+//            val guiMenueAdmin = GuiMenueAdmin()
+//            guiMenueAdmin.start(stage)
         }
 
-        splitPane.apply {
-            orientation = Orientation.VERTICAL
-            items.addAll(guiMenueAdmin.splitPane, btnZeiterfassung)
-            setDividerPositions(0.8) // Set initial divider position
-        }
 
-        with(stage) {
-            scene = Scene(splitPane, 700.0, 500.0)
-            title = "Zeiterfassung"
-//            setOnCloseRequest { PlatformImpl.exit() }
-            show()
-        }
+
+
+
+
+//          with(stage) {
+//              scene = Scene(root, 700.0, 500.0)
+//              title = "Zeiterfassung"
+////            setOnCloseRequest { PlatformImpl.exit() }
+//              show()
     }
+
+
     fun reset() {
 
     }
 
-    fun textWeitergabe(text: String, zeile: Int) {
-        guiMenueAdmin.ausgabeFenster.ausgabeTextHinzufügen(text, zeile)
+    fun textWeitergabe(text: String) {
+        ausgabeFenster.ausgabeTextHinzufügen(text)
     }
+
 }
