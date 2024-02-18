@@ -1,4 +1,7 @@
+package GuiElemente
+
 import LogIn.logInAbfrage
+import angemeldet
 import com.sun.javafx.application.PlatformImpl.exit
 import javafx.application.Application
 import javafx.geometry.Insets

@@ -1,3 +1,5 @@
+package GuiElemente
+
 import javafx.geometry.Insets
 import javafx.scene.control.TextArea
 import javafx.scene.layout.VBox

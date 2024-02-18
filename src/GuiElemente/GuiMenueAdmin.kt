@@ -1,6 +1,6 @@
-import Benutzer.GuiBenutzerErstellen
-import Zeit.GuiZeit
-import ZeitArchiv.GuiZeitArchiv
+package GuiElemente
+
+import angemeldet
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.scene.control.Button
@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
+import vorname
+import zustandZeitmessung
 
 class GuiMenueAdmin{
     var root = BorderPane()

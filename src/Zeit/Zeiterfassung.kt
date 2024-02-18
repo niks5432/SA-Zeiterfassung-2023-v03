@@ -1,10 +1,7 @@
-import `- Archiv`.guiMenue
-import Bericht.GuiBericht
-import Bericht.berichteintragAbfrage
-import Zeit.GuiZeit
+import GuiElemente.GuiBericht
+import GuiElemente.GuiAusgabeFenster
 import javafx.stage.Stage
 import java.time.Duration
-import java.time.LocalDateTime
 import java.time.LocalTime
 
 class Zeiterfassung() {

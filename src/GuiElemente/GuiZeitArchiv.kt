@@ -1,7 +1,6 @@
-package ZeitArchiv
+package GuiElemente
 
-import GuiAusgabeFenster
-import GuiMenueAdmin
+import ZeitArchiv.ZeitArchiv
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.scene.control.*

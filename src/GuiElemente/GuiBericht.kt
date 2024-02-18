@@ -1,9 +1,7 @@
-package Bericht
+package GuiElemente
 
-import GuiAusgabeFenster
-import GuiMenueAdmin
+import Bericht.Bericht
 import javafx.geometry.Insets
-import javafx.geometry.Orientation
 import javafx.scene.control.*
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font

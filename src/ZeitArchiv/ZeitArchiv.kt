@@ -1,14 +1,13 @@
 package ZeitArchiv
 
-import GuiAusgabeFenster
+import GuiElemente.GuiAusgabeFenster
 import berechneArbeitstage
 import effektivearbeitsstundenamtag
 import formatiereZeitArchiv
 import minusuberstunden
-import userIdString
 import java.time.Duration
 import java.time.LocalDate
-import java.time.LocalTime
+
 class ZeitArchiv {
       var startDatumStr = ""
       var endDatumStr = ""

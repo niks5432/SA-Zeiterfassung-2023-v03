@@ -1,6 +1,5 @@
-package Zeit
+package GuiElemente
 
-import GuiAusgabeFenster
 import javafx.geometry.Insets
 import javafx.scene.control.Button
 import javafx.scene.control.SplitPane

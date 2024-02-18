@@ -1,13 +1,5 @@
 package LogIn
 
-import GuiLogIn
-import angemeldet
-import javafx.stage.Stage
-import userDaten
-import vorname
-import nachname
-import userIdString
-
 fun logInAbfrage(user: String, userpasswort: String) {
 
     val currentUser = LogIn()

@@ -1,7 +1,6 @@
-package Benutzer
+package GuiElemente
 
-import GuiAusgabeFenster
-import GuiMenueAdmin
+import Benutzer.eintragBenutzerDb
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.scene.control.*
