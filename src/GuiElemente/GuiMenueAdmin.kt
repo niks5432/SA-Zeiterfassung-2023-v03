@@ -27,9 +27,7 @@ class GuiMenueAdmin{
 
      fun start(stage: Stage){
 
-
-//        ausgabeFenster.ausgabeTextHinzufügen("Hallo", 0)
-        vbox = VBox().apply {
+         vbox = VBox().apply {
             spacing = 30.0
             padding = Insets(0.0, 0.0, 0.0, 70.0)
             children.addAll(
@@ -62,7 +60,7 @@ class GuiMenueAdmin{
             }
 
          GuiZeit.btnZeitmessung()
-         GuiZeit.btnZeiterfassung.isVisible = false
+         GuiZeit.btnFlaecheZusammen.isVisible = false
          GuiAusgabeFenster.ausgabeFensterAnzeigen()
          GuiAusgabeFenster.ausgabeFenster.apply {
              prefWidth = 400.0
@@ -72,11 +70,11 @@ class GuiMenueAdmin{
         root = BorderPane().apply {
             left = vbox
             right = GuiAusgabeFenster.vbox
-            bottom = GuiZeit.btnZeiterfassung
+            bottom = GuiZeit.btnFlaecheZusammen
         }
 
         buttonZeitmessung.setOnAction {
-            GuiZeit.btnZeiterfassung.isVisible = true
+            GuiZeit.btnFlaecheZusammen.isVisible = true
             GuiZeit.wilkommen()
         }
 
