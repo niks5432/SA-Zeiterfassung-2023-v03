@@ -60,8 +60,11 @@ class Zeiterfassung() {
 
         if (zustandZeitmessung >= 4) {
             // Deklaration und ausrechnen der Arbeits & Pausenzeit
-            var arbeitsZeit = Duration.between(startZeit, endZeit)
+            var arbeitsZeit = Duration.between(endZeit, startZeit)
             var pausenZeit = Duration.between(pausenZeit, pausenzeitEnde)
+            val formatiertepausenZeit = formatiereZeitArchiv(pausenZeit)
+            val formatiertearbeitsZeit =formatiereZeitArchiv(arbeitsZeit)
+
 
             // Mit ${} kan in println eine funktion aufgerufen werden
             println("Arbeitszeit: ${formatiereZeit(arbeitsZeit)} | Pausenzeit: ${formatiereZeit(pausenZeit)}")
@@ -71,7 +74,7 @@ class Zeiterfassung() {
             println(zeiten)
 
             eintragZeitDB(userId, startZeit, endZeit, formatiereZeit(pausenZeit), zustandid = 1, abwesenheitsid = 4)
-            GuiAusgabeFenster.ausgabeTextHinzufügen("Arbeitszeit: $arbeitsZeit | Pausenzeit: $pausenZeit" )
+            GuiAusgabeFenster.ausgabeTextHinzufügen("Arbeitszeit: $formatiertearbeitsZeit | Pausenzeit: $formatiertepausenZeit" )
 
 //            berichteintragAbfrage()
             val stage = Stage()

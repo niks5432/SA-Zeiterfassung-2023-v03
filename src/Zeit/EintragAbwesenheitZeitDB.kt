@@ -1,4 +1,4 @@
-///*
+package Zeit///*
 // * Titel: RDB-Test
 // * Firma: ABB TS
 // * Autor: M. Bontognali

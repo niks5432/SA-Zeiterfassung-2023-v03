@@ -55,9 +55,16 @@ class ZeitArchiv {
             val arbeitsstundenperiode = effektivearbeitsstundenamtag(startzeitelem, endzeitelem)
             formatiertearbeitsstundenperiode += arbeitsstundenperiode
             formatiertetotalArbeitszeit += ergebnis
-            println("UserID: ${abfrageUserId.toInt()} | Datum: $datumelem | Startzeit: $startzeitelem | Endzeit: $endzeitelem | Vorname: $vornameelem | Über-/Minus-stunden: $ergebnisformatiert")
-            GuiAusgabeFenster.ausgabeTextHinzufügen("UserID: ${abfrageUserId.toInt()} | Datum: $datumelem | Startzeit: $startzeitelem | Endzeit: $endzeitelem | Vorname: $vornameelem | Über-/Minus-stunden: $ergebnisformatiert")
 
+            val userIdFormatted = abfrageUserId.toInt().toString().padEnd(10)
+            val datumFormatted = datumelem.padEnd(12)
+            val startzeitFormatted = startzeitelem.padEnd(10)
+            val endzeitFormatted = endzeitelem.padEnd(10)
+            val vornameFormatted = vornameelem.padEnd(15)
+            val ergebnisformatiertt = ergebnisformatiert.padEnd(20)
+
+            println("UserID: $userIdFormatted | Datum: $datumFormatted | Startzeit: $startzeitFormatted | Endzeit: $endzeitFormatted | Vorname: $vornameFormatted | Über-/Minus-stunden: $ergebnisformatiertt")
+            GuiAusgabeFenster.ausgabeTextHinzufügen("UserID: $userIdFormatted | Datum: $datumFormatted | Startzeit: $startzeitFormatted | Endzeit: $endzeitFormatted | Vorname: $vornameFormatted | Über-/Minus-stunden: $ergebnisformatiertt")
         }
 
         val endDatumParce = LocalDate.parse(endDatumStr)
