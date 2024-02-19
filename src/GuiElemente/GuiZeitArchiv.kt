@@ -29,7 +29,10 @@ object GuiZeitArchiv {
     fun start(stage: Stage) {
         val splitPane = SplitPane()
         GuiAusgabeFenster.ausgabeFensterAnzeigen()
-
+        GuiAusgabeFenster.ausgabeFenster.apply {
+            prefWidth = 700.0
+            prefHeight = 360.0
+        }
         val vbox = VBox().apply {
             spacing = 10.0
             padding = Insets(20.0, 15.0, 15.0, 10.0)

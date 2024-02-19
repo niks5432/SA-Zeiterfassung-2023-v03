@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox
 object GuiAusgabeFenster{
 
 
-    private val ausgabeFenster = TextArea()
+    val ausgabeFenster = TextArea()
     var vbox = VBox()
 
     fun ausgabeFensterAnzeigen() {

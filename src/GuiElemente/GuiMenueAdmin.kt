@@ -60,14 +60,14 @@ class GuiMenueAdmin{
                     }
                 )
             }
+
          GuiZeit.btnZeitmessung()
          GuiZeit.btnZeiterfassung.isVisible = false
          GuiAusgabeFenster.ausgabeFensterAnzeigen()
-
-        splitPane.apply {
-            orientation = Orientation.HORIZONTAL
-            items.addAll(vbox, GuiAusgabeFenster.vbox)
-        }
+         GuiAusgabeFenster.ausgabeFenster.apply {
+             prefWidth = 400.0
+             prefHeight = 360.0
+         }
 
         root = BorderPane().apply {
             left = vbox
