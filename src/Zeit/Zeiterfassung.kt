@@ -19,6 +19,7 @@ class Zeiterfassung() {
                 1 -> {
                     startZeit = LocalTime.now()
                     startZeit = startZeit.withNano(0)
+                    startZeit = startZeit.withSecond(0)
                     zustandZeitmessung ++
                     println("Startzeit $startZeit")
                     GuiAusgabeFenster.ausgabeTextHinzufügen("Startzeit: $startZeit")
@@ -28,6 +29,8 @@ class Zeiterfassung() {
                 4 -> {
                     endZeit = LocalTime.now()
                     endZeit = endZeit.withNano(0)
+                    endZeit = endZeit.withSecond(0)
+
                     zustandZeitmessung ++
                     println("Endzeit $endZeit")
                     GuiAusgabeFenster.ausgabeTextHinzufügen("Endzeit: $endZeit" )
@@ -37,6 +40,7 @@ class Zeiterfassung() {
                 2 -> {
                     pausenZeit = LocalTime.now()
                     pausenZeit = pausenZeit.withNano(0)
+                    pausenZeit = pausenZeit.withSecond(0)
                     zustandZeitmessung ++
                     println("pausenzeitBeginn $pausenZeit")
                     GuiAusgabeFenster.ausgabeTextHinzufügen("Pause beginn: $pausenZeit" )
@@ -46,6 +50,8 @@ class Zeiterfassung() {
                 3 -> {
                     pausenzeitEnde = LocalTime.now()
                     pausenzeitEnde = pausenzeitEnde.withNano(0)
+                    pausenzeitEnde = pausenzeitEnde.withSecond(0)
+
                     zustandZeitmessung ++
                     println("pausenzeitEnde $pausenzeitEnde")
                     GuiAusgabeFenster.ausgabeTextHinzufügen("Pause ende: $pausenzeitEnde" )
