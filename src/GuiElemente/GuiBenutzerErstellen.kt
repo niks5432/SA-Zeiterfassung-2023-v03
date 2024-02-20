@@ -23,8 +23,7 @@ object GuiBenutzerErstellen {
     private val buttonZurückMenue = Button("Menü")
 
     private var titleLabel = Label("Menüpunkt Benutzer erstellen")
-    private var hinweisLabel = Label("Wenn ein Benutzer mit leeren Zeilen erstellt wird, wird das Programm abgebrochen.\n" +
-                                     "(Admin Zeile kann leer bleiben)")
+
     private var newVornameLabel = Label("Bitte den Vornamen des neuen Benutzer Eingeben")
     private var newNachnameLabel = Label("Bitte den Nachnamen des neuen Benutzer Eingeben")
     private var newPasswortLabel = Label("Bitte das Passwort des neuen Benutzer Eingeben")
@@ -150,12 +149,12 @@ object GuiBenutzerErstellen {
         if (rbn == adminRbn && rbn.isSelected) {
             nonAdminRbn.isSelected = false
             println("Admin")
-            rbnAdmIs = true
         } else if (rbn == nonAdminRbn && rbn.isSelected) {
             adminRbn.isSelected = false
             println("kein Admin")
-            rbnAdmIs = false
         }
     }
+
+
 
 }

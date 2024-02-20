@@ -22,7 +22,7 @@ class Zeiterfassung() {
                     startZeit = startZeit.withSecond(0)
                     zustandZeitmessung ++
                     println("Startzeit $startZeit")
-                    GuiAusgabeFenster.ausgabeTextHinzufügen("Startzeit: $startZeit")
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Startzeit:\t\t$startZeit")
 
                 }
 
@@ -33,7 +33,7 @@ class Zeiterfassung() {
 
                     zustandZeitmessung ++
                     println("Endzeit $endZeit")
-                    GuiAusgabeFenster.ausgabeTextHinzufügen("Endzeit: $endZeit" )
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Endzeit:\t\t$endZeit" )
 
                 }
 
@@ -43,7 +43,7 @@ class Zeiterfassung() {
                     pausenZeit = pausenZeit.withSecond(0)
                     zustandZeitmessung ++
                     println("pausenzeitBeginn $pausenZeit")
-                    GuiAusgabeFenster.ausgabeTextHinzufügen("Pause beginn: $pausenZeit" )
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Pause beginn:\t$pausenZeit" )
 
                 }
 
@@ -54,7 +54,7 @@ class Zeiterfassung() {
 
                     zustandZeitmessung ++
                     println("pausenzeitEnde $pausenzeitEnde")
-                    GuiAusgabeFenster.ausgabeTextHinzufügen("Pause ende: $pausenzeitEnde" )
+                    GuiAusgabeFenster.ausgabeTextHinzufügen("Pause ende:\t$pausenzeitEnde" )
                 }
             }
 

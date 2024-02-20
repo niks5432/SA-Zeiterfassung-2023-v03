@@ -10,7 +10,7 @@ import kotlin.math.absoluteValue
 // Allgemeine Funktionen
 
 
-fun splitString(string: String): kotlin.collections.List<String> {
+fun splitString(string: String): List<String> {
     val string = userDaten.split(" ")
     return string
 }

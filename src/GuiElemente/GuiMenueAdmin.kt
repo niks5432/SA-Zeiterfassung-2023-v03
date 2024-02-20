@@ -15,8 +15,6 @@ import zustandZeitmessung
 
 class GuiMenueAdmin{
     var root = BorderPane()
-    val splitPane = SplitPane()
-    val splitPaneZeitmessung = SplitPane()
     var vbox = VBox()
     val buttonZeitmessung = Button("Zeitmessung")
     val buttonArchiv = Button("Stunden Archiv")
@@ -54,7 +52,7 @@ class GuiMenueAdmin{
                         prefWidth = 120.0
                                           },
                     buttonLogOut.apply {
-                    prefWidth = 120.0
+                        prefWidth = 120.0
                     }
                 )
             }
