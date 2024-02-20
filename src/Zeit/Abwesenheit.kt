@@ -27,7 +27,7 @@ fun abwesenheit() {
         val abwesenheitsid = 2
         val zustandId = 1
 
-        if (GuiAbwesenheit.cbxGanzerTag.isSelected) {
+        if (GuiAbwesenheit.rbnGanzerTag.isSelected) {
             val userid = userIdString.toInt()
             val startZeit = LocalTime.of(7, 0, 0)
             val endZeit = LocalTime.of(16, 0, 0)
@@ -36,7 +36,7 @@ fun abwesenheit() {
 
             eintragAbwesenheitZeitDB(userid, strDatum, endDatum, anzahlTage, startZeit, endZeit, pausenZeit.toString(), abwesenheitsid, zustandId)
 
-        } else if (GuiAbwesenheit.cbxHalbertag.isSelected) {
+        } else if (GuiAbwesenheit.rbnHalbertag.isSelected) {
             val userid = userIdString.toInt()
             val startZeit = LocalTime.of(7, 0, 0)
             val endZeit = LocalTime.of(11, 0, 0)
