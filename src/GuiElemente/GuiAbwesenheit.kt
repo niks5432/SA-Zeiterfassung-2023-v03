@@ -13,23 +13,15 @@ import java.util.ArrayList
 
 object GuiAbwesenheit {
 
-
-
-
-    private var titleLabel = Label("Menüpunkt: Abwesenheit Melden")
+    private var titleLabel = Label("Abwesenheit Melden")
     private var grundLabel = Label("Bitte Grund der Abwesenheit angeben")
     private var dauerLabel = Label("Bitte Pensum bei Abwesenheit angeben")
     private var datumLabel = Label("Bitte Dauer der Abwesenheit angeben")
 
-    val cbxKrank = RadioButton("Krankheit")
-    val cbxFeiertag = RadioButton("Feiertag")
-    val cbxHalbertag = RadioButton("Halbtags Abwesend")
-    val cbxGanzerTag = RadioButton("Ganztags Abwesend")
-
-    var cbxKrankState = false
-    var cbxFeiertagState = false
-    var cbxHalbertagState = false
-    var cbxGanzerTagState = false
+    val rbnKrank = RadioButton("Krankheit")
+    val rbnFeiertag = RadioButton("Feiertag")
+    val rbnHalbertag = RadioButton("Halbtags Abwesend")
+    val rbnGanzerTag = RadioButton("Ganztags Abwesend")
 
     val strDatum = TextField()
     val endDatum = TextField()
@@ -38,16 +30,14 @@ object GuiAbwesenheit {
     private val buttonBack = Button("Fenster schliessen")
     fun start(stage: Stage) {
 
-
         val hboxGrund = HBox().apply {
             spacing = 20.0
-//            padding = Insets(10.0, 10.0, 10.0, 10.0)
             with(children) {
                 addAll(
-                    cbxKrank.apply {
+                    rbnKrank.apply {
 
                     },
-                    cbxFeiertag.apply {
+                    rbnFeiertag.apply {
 
                     },
                 )
@@ -56,13 +46,12 @@ object GuiAbwesenheit {
 
         val hboxDauer = HBox().apply {
             spacing = 20.0
-//            padding = Insets(10.0, 10.0, 10.0, 10.0)
             with(children) {
                 addAll(
-                    cbxHalbertag.apply {
+                    rbnHalbertag.apply {
 
                     },
-                    cbxGanzerTag.apply {
+                    rbnGanzerTag.apply {
 
                     },
                 )
@@ -119,26 +108,25 @@ object GuiAbwesenheit {
                     datumLabel,
                     hboxDatum,
                     hboxBtn
-
                 )
             }
         }
 
-        cbxKrank.setOnAction {
+        rbnKrank.setOnAction {
             println("1")
-            rbnGrund(cbxKrank)
+            rbnGrund(rbnKrank)
         }
-        cbxFeiertag.setOnAction {
-            rbnGrund(cbxFeiertag)
+        rbnFeiertag.setOnAction {
+            rbnGrund(rbnFeiertag)
 
         }
 
-        cbxHalbertag.setOnAction {
-            rbnDauer(cbxHalbertag)
+        rbnHalbertag.setOnAction {
+            rbnDauer(rbnHalbertag)
 
         }
-        cbxGanzerTag.setOnAction {
-            rbnDauer(cbxGanzerTag)
+        rbnGanzerTag.setOnAction {
+            rbnDauer(rbnGanzerTag)
         }
 
         buttonAbsenden.setOnAction {
@@ -156,14 +144,14 @@ object GuiAbwesenheit {
         }
     }
     private fun rbnGrund(rbn: RadioButton) {
-        if (rbn == cbxKrank && rbn.isSelected) cbxFeiertag.isSelected = false
-        else if (rbn == cbxFeiertag && rbn.isSelected)  cbxKrank.isSelected = false
-        }
+        if (rbn == rbnKrank && rbn.isSelected) rbnFeiertag.isSelected = false
+        else if (rbn == rbnFeiertag && rbn.isSelected)  rbnKrank.isSelected = false
+    }
 
     private fun rbnDauer(rbn: RadioButton) {
-        if (rbn == cbxHalbertag && rbn.isSelected) cbxGanzerTag.isSelected = false
-        else if (rbn == cbxGanzerTag && rbn.isSelected)  cbxHalbertag.isSelected = false
-}
+        if (rbn == rbnHalbertag && rbn.isSelected) rbnGanzerTag.isSelected = false
+        else if (rbn == rbnGanzerTag && rbn.isSelected)  rbnHalbertag.isSelected = false
+    }
 
     fun textTflReset() {
            }
