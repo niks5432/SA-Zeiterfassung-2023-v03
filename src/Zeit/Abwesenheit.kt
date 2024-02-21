@@ -71,6 +71,7 @@ fun abwesenheit() {
 
 
     }
+
     when {
         GuiAbwesenheit.rbnFeiertag.isSelected -> abwesenheitFeiertag()
         GuiAbwesenheit.rbnKrank.isSelected -> abwesenheitKrank()

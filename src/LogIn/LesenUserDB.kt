@@ -11,6 +11,8 @@ package LogIn/*
  * MySQL Server muss in Betrieb sein.
  */
 
+import HOST
+import PORT
 import admin
 import email
 import funktion
@@ -23,8 +25,8 @@ import java.sql.*
 fun LesenUserDB(user: String) : String {
                                             // val currentDateTime = LocalDateTime.now()
     val PROTOCOL = "jdbc:mysql"
-    val HOST =     "localhost"
-    val PORT =     3306
+//    val HOST =     "localhost"
+//    val PORT =     3306
     val DATABASE = "SA-Semesterarbeit-2023"
     val OPTIONS =  "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
     val URL =      "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"

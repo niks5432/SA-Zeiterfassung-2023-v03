@@ -1,5 +1,7 @@
 package ZeitArchiv
 
+import HOST
+import PORT
 import java.sql.DriverManager
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -7,8 +9,8 @@ import java.time.LocalTime
 import java.util.*
 fun lesenArchivDB(userId: Int, startDatums: LocalDate, endDatums: LocalDate): List<String> {
     val PROTOCOL = "jdbc:mysql"
-    val HOST =     "localhost"
-    val PORT =     3306
+//    val HOST =     "localhost"
+//    val PORT =     3306
     val DATABASE = "SA-Semesterarbeit-2023"
     val OPTIONS =  "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
     val URL =      "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
@@ -23,7 +25,7 @@ fun lesenArchivDB(userId: Int, startDatums: LocalDate, endDatums: LocalDate): Li
     val endDatumStr = endDatums.toString()
     // SQL erstellen um Zeilen aus DB zu laden
     val sql = "SELECT b.userid, z.datum, z.startzeit, z.endzeit, b.vorname " +
-            "FROM Zeiterfassung z, benutzer b " +
+            "FROM Zeiterfassung z, Benutzer b " +
             "WHERE z.datum BETWEEN '$startDatumStr' AND '$endDatumStr' " +
             "AND b.userid = '$userId'"+
             "ORDER BY z.datum"

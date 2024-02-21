@@ -1,5 +1,7 @@
 package Benutzer
 
+import HOST
+import PORT
 import javafx.stage.Stage
 import java.sql.DriverManager
 
@@ -9,8 +11,8 @@ fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, n
 
 // Database connection parameters
     val PROTOCOL = "jdbc:mysql"
-    val HOST = "localhost"
-    val PORT = 3306
+//    val HOST = "localhost"
+//    val PORT = 3306
     val DATABASE = "SA-Semesterarbeit-2023"
     val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
     val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"

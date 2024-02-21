@@ -26,8 +26,8 @@ import java.time.LocalTime
 
     fun eintragAbwesenheitZeitDB(userId: Int, startDatum: LocalDate, endDatum: LocalDate, anzahltage: Int,  startzeit: LocalTime, endzeit: LocalTime, pausenzeit: String, abwesenheitsid: Int, zustandid: Int) {
     val PROTOCOL = "jdbc:mysql"
-    val HOST =     "localhost"
-    val PORT =     3306
+//    val HOST =     "localhost"
+//    val PORT =     3306
     val DATABASE = "SA-Semesterarbeit-2023"
     val OPTIONS =  "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
     val URL =      "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
