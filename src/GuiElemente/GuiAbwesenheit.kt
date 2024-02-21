@@ -101,13 +101,13 @@ object GuiAbwesenheit {
                         font = Font.font(25.0)
                         style = "-fx-font-weight: bold"
                                      },
-                    grundLabel,
-                    hboxGrund,
-                    dauerLabel,
-                    hboxDauer,
-                    datumLabel,
-                    hboxDatum,
-                    hboxBtn
+                        grundLabel,
+                        hboxGrund,
+                        dauerLabel,
+                        hboxDauer,
+                        datumLabel,
+                        hboxDatum,
+                        hboxBtn
                 )
             }
         }
