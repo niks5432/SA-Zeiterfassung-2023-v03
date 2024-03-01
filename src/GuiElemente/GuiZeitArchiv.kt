@@ -115,7 +115,7 @@ object GuiZeitArchiv {
         }
 
         with(stage) {
-            scene = javafx.scene.Scene(splitPane, 1200.0, 500.0)
+            scene = javafx.scene.Scene(splitPane, 1250.0, 500.0)
             title = "Zeiterfassung"
             show()
         }
@@ -198,7 +198,7 @@ object GuiZeitArchiv {
         }
 
         with(stage) {
-            scene = javafx.scene.Scene(splitPane, 1100.0, 500.0)
+            scene = javafx.scene.Scene(splitPane, 1250.0, 500.0)
             title = "Zeiterfassung"
             show()
         }
