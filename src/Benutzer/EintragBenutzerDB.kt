@@ -1,5 +1,6 @@
 package Benutzer
 
+import GuiElemente.GuiAusgabeFenster
 import HOST
 import PORT
 import javafx.stage.Stage
@@ -13,11 +14,11 @@ fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, n
     val PROTOCOL = "jdbc:mysql"
 //    val HOST = "localhost"
 //    val PORT = 3306
-    val DATABASE = "SA-Semesterarbeit-2023"
+    val DATABASE = "sa_semesterarbeit_2023"
     val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
     val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-    val USER = "UserTest"
-    val PASSWORD = "admin"
+    val USER =     "root"
+    val PASSWORD = "SaZeiterfassung$"
 
 // Verbindung zur DB herstellen
     val connection = DriverManager.getConnection(URL, USER, PASSWORD)
@@ -49,5 +50,7 @@ fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, n
 // SQL ausführen
     statement.executeUpdate(sql)
     println("Daten in DB gespeichert.")
+    GuiAusgabeFenster.ausgabeTextHinzufügen("Neuer Benutzer in DB gespeichert." )
+
 
 }

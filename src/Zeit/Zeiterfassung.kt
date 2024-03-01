@@ -72,9 +72,8 @@ class Zeiterfassung() {
             val zeiten = mutableListOf(startZeit, endZeit, formatiereZeit(pausenZeit))
 
             println(zeiten)
-
-            eintragZeitDB(userId, startZeit, endZeit, formatiereZeit(pausenZeit), zustandid = 1, abwesenheitsid = 4)
             GuiAusgabeFenster.ausgabeTextHinzufügen("Arbeitszeit: $formatiertearbeitsZeit | Pausenzeit: $formatiertepausenZeit" )
+            eintragZeitDB(userId, startZeit, endZeit, formatiereZeit(pausenZeit), zustandid = 1, abwesenheitsid = 4)
 
 //            berichteintragAbfrage()
             val stage = Stage()

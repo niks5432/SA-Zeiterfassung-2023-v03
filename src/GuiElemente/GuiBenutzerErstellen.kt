@@ -83,7 +83,6 @@ object GuiBenutzerErstellen {
                             padding = Insets(0.0, 0.0, -5.0, 2.0)
                         },
                         adminRbn.apply {
-
                             },
                         nonAdminRbn.apply {
                                 VBox.setMargin(this, Insets(-28.0, 0.0, 0.0, 90.0))
@@ -97,7 +96,6 @@ object GuiBenutzerErstellen {
                             VBox.setMargin(this, Insets(-35.0, 0.0, 0.0, 0.0))
                         }
                     )
-
                 }
             }
 
@@ -122,6 +120,7 @@ object GuiBenutzerErstellen {
             textTflReset()
         }
         buttonZurückMenue.setOnAction {
+            GuiAusgabeFenster.clear()
             stage.close()
             val guiMenueAdmin = GuiMenueAdmin()
             guiMenueAdmin.start(stage)

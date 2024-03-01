@@ -130,6 +130,7 @@ object GuiAbwesenheit {
         }
 
         buttonAbsenden.setOnAction {
+            stage.close()
             abwesenheit()
         }
         buttonBack.setOnAction {

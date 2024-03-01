@@ -1,8 +1,8 @@
 package GuiElemente
 
 import LogIn.logInAbfrage
+import admin
 import angemeldet
-import com.sun.javafx.application.PlatformImpl.exit
 import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.geometry.Pos
@@ -51,30 +51,19 @@ class GuiLogIn : Application() {
             val currentUser = user.text
             val currentUserPasswort = passwort.text
             logInAbfrage(currentUser,currentUserPasswort)
-            println(angemeldet)
-            if (angemeldet) {
-                println("Menue wird ausgeführt")
-                stage.close()
-                val guiMenueAdminStage = Stage()
-                val guiMenueAdmin = GuiMenueAdmin()
-                guiMenueAdmin.start(stage)
-            } else {
-                falscheAngaben()
-
-            }
-
+            angemeldet(stage)
         }
 
 
         with(stage) {
             scene = Scene(box, 500.0, 200.0)
             title = "Zeiterfassung"
-            setOnCloseRequest { exit() }
+//            setOnCloseRequest { }
             show()
         }
     }
 
-    fun falscheAngaben() {
+    private fun falscheAngaben() {
         with(Alert(Alert.AlertType.INFORMATION)) {
             contentText = "Falsche Benutzer Daten \n" +
                           "Bitte nochmal eingeben"
@@ -82,6 +71,27 @@ class GuiLogIn : Application() {
         }
 
     }
+
+    private fun angemeldet(stage : Stage) {
+        if (angemeldet) {
+            println("Menue wird ausgeführt")
+            println("Angemeldet: $angemeldet")
+            println("Admin: $admin")
+            if (admin) {
+                stage.close()
+                val guiMenueAdmin = GuiMenueAdmin()
+                guiMenueAdmin.start(stage)
+            } else {
+                stage.close()
+                val guiMenueUser = GuiMenueUser()
+                guiMenueUser.start(stage)
+            }
+        } else {
+                falscheAngaben()
+        }
+
+    }
+
 }
 
 

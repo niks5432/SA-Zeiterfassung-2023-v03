@@ -10,11 +10,11 @@ fun lesenEintragIdDB() : Int {
         val PROTOCOL = "jdbc:mysql"
 //        val HOST =     "localhost"
 //        val PORT =     3306
-        val DATABASE = "SA-Semesterarbeit-2023"
+        val DATABASE = "sa_semesterarbeit_2023"
         val OPTIONS =  "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
         val URL =      "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-        val USER =     "UserTest"
-        val PASSWORD = "admin"
+        val USER =     "root"
+        val PASSWORD = "SaZeiterfassung$"
 
         // Verbindung zur DB herstellen
         val connection = DriverManager.getConnection(URL, USER, PASSWORD)

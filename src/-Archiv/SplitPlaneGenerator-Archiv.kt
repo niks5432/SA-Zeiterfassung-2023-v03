@@ -1,4 +1,4 @@
-package `- Archiv`//import javafx.scene.control.SplitPane
+package `-Archiv`//import javafx.scene.control.SplitPane
 //import javafx.scene.layout.VBox
 //
 //class SplitPlaneGenerator(val elementA: VBox, val elementB: VBox, orientation: String, val seitVerhaeltnis: Double) {

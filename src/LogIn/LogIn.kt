@@ -19,7 +19,8 @@ class LogIn {
 //        do {
             var schleifenEndeLogIn   = false
             userDaten = LesenUserDB(user)
-            val userDatenSplit = splitString(userDaten)                                                    // Splitet den String userDaten nach Abstand und speichert es in Liste userDaten Split
+            val userDatenSplit = splitString(userDaten)                                         // Splitet den String userDaten nach Abstand und speichert es in Liste userDaten Split
+            println(userDatenSplit)
             if (userDatenSplit.get(2) == user && userDatenSplit.get(2) != "") {                           //überprüft ob der Benutername in Datenbank enthalten ist
                 if (userDatenSplit.get(1) == userpasswort) {                                             //überprüft ob Passwirt in der Datenbank mit dem Benutzerpasswort übereinstimmt
                     schleifenEndeLogIn = true

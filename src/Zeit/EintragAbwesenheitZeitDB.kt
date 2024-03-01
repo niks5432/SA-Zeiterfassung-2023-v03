@@ -19,6 +19,7 @@
  * MySQL Server muss in Betrieb sein.
  */
 
+import GuiElemente.GuiAusgabeFenster
 import java.sql.DriverManager
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -28,11 +29,11 @@ import java.time.LocalTime
     val PROTOCOL = "jdbc:mysql"
 //    val HOST =     "localhost"
 //    val PORT =     3306
-    val DATABASE = "SA-Semesterarbeit-2023"
+    val DATABASE = "sa_semesterarbeit_2023"
     val OPTIONS =  "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
     val URL =      "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-    val USER =     "UserTest"
-    val PASSWORD = "admin"
+    val USER =     "root"
+    val PASSWORD = "SaZeiterfassung$"
 
     // Zu speichernde Daten
     val eintragid       =  0
@@ -77,6 +78,7 @@ import java.time.LocalTime
     }
 
     println("Daten in DB gespeichert.")
+    GuiAusgabeFenster.ausgabeTextHinzufügen("Abwesenheit in DB gespeichert." )
 
 
 

@@ -14,7 +14,7 @@ var admin = false
 var angemeldet = false
 var zustandZeitmessung = 0
 
-val HOST =     "192.168.55.107"
+val HOST =     "192.168.55.10"
 val PORT =     3308
 
 

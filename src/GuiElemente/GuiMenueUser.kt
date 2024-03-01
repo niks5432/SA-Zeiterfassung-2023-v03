@@ -13,7 +13,7 @@ import javafx.stage.Stage
 import vorname
 import zustandZeitmessung
 
-class GuiMenueAdmin{
+class GuiMenueUser{
     var root = BorderPane()
     var vbox = VBox()
     val buttonZeitmessung = Button("Zeitmessung")
@@ -48,9 +48,6 @@ class GuiMenueAdmin{
                     buttonVisieren.apply {
                         prefWidth = 120.0
                                          },
-                    buttonErstellen.apply {
-                        prefWidth = 120.0
-                                          },
                     buttonLogOut.apply {
                         prefWidth = 120.0
                     }
@@ -72,39 +69,33 @@ class GuiMenueAdmin{
         }
 
         buttonZeitmessung.setOnAction {
-            GuiAusgabeFenster.clear()
             GuiZeit.btnFlaecheZusammen.isVisible = true
             GuiZeit.wilkommen()
         }
 
-            buttonArchiv.setOnAction {
-                GuiAusgabeFenster.clear()
-                stage.close()
-                GuiZeitArchiv.start(stage)
+        buttonArchiv.setOnAction {
+            stage.close()
+            GuiZeitArchiv.startUser(stage)
+        }
+        buttonVisieren.setOnAction { }
+        buttonErstellen.setOnAction {
+            stage.close()
+            GuiBenutzerErstellen.start(stage)
             }
-            buttonVisieren.setOnAction {
-                GuiAusgabeFenster.clear()
-            }
-            buttonErstellen.setOnAction {
-                GuiAusgabeFenster.clear()
-                stage.close()
-                GuiBenutzerErstellen.start(stage)
-            }
-            buttonLogOut.setOnAction {
-                GuiAusgabeFenster.clear()
-                angemeldet = false
-                zustandZeitmessung = 0
-                println("Sie wurden Abgemeldet")
-                stage.close()
-                val loginGui = GuiLogIn()
-                loginGui.start(stage)
-            }
+        buttonLogOut.setOnAction {
+            angemeldet = false
+            zustandZeitmessung = 0
+            println("Sie wurden Abgemeldet")
+            stage.close()
+            val loginGui = GuiLogIn()
+            loginGui.start(stage)
+        }
 
-            with(stage) {
-                scene = javafx.scene.Scene(root, 700.0, 500.0)
-                title = "Zeiterfassung"
-                show()
-            }
+        with(stage) {
+            scene = javafx.scene.Scene(root, 700.0, 500.0)
+            title = "Zeiterfassung"
+            show()
+        }
 
     }
 }

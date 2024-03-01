@@ -9,9 +9,11 @@ import java.time.Duration
 import java.time.LocalDate
 
 class ZeitArchiv {
-      var startDatumStr = ""
-      var endDatumStr = ""
-      var abfrageUserId = ""
+    var startDatumStr = ""
+    var endDatumStr = ""
+    var abfrageUserId = ""
+    var abwesenheitsId = 0
+
     fun archiveAbfrage() {
 
 //        println("Geben Sie ein Startdatum im Format (yyyy-MM-dd) ein")
@@ -27,7 +29,7 @@ class ZeitArchiv {
         val endDatum = LocalDate.parse(endDatumStr)
 
         // Datenbankabfrage durchführen
-        val archiveDatenListe = lesenArchivDB(abfrageUserId.toInt(), startDatum, endDatum)
+        val archiveDatenListe = lesenArchivDB(abfrageUserId.toInt(), startDatum, endDatum, abwesenheitsId)
 
 //    println("Anzahl der Elemente in der Liste: ${archiveDatenListe.size}")
 
@@ -50,6 +52,7 @@ class ZeitArchiv {
             startzeitelem = row[1]
             endzeitelem = row[2]
             vornameelem = row[3]
+            val abwesenheitsidBack = row[4]
             val ergebnis = minusuberstunden(startzeitelem, endzeitelem)
             val ergebnisformatiert = formatiereZeitArchiv(ergebnis)
             val arbeitsstundenperiode = effektivearbeitsstundenamtag(startzeitelem, endzeitelem)
@@ -63,8 +66,8 @@ class ZeitArchiv {
             val vornameFormatted = vornameelem.padEnd(15)
             val ergebnisformatiertt = ergebnisformatiert.padEnd(20)
 
-            println("UserID: $userIdFormatted | Datum: $datumFormatted | Startzeit: $startzeitFormatted | Endzeit: $endzeitFormatted | Vorname: $vornameFormatted | Über-/Minus-stunden: $ergebnisformatiertt")
-            GuiAusgabeFenster.ausgabeTextHinzufügen("UserID: $userIdFormatted | Datum: $datumFormatted | Startzeit: $startzeitFormatted | Endzeit: $endzeitFormatted | Vorname: $vornameFormatted | Über-/Minus-stunden: $ergebnisformatiertt")
+            println("UserID: $userIdFormatted \t| Datum: $datumFormatted \t| Startzeit: $startzeitFormatted\t | Endzeit: $endzeitFormatted\t | Vorname: $vornameFormatted\t | Über-/Minus-stunden: $ergebnisformatiertt | AbwesenheitID: $abwesenheitsidBack")
+            GuiAusgabeFenster.ausgabeTextHinzufügen("UserID: $userIdFormatted\tDatum: $datumFormatted\tStartzeit: $startzeitFormatted\t Endzeit: $endzeitFormatted\tVorname: $vornameFormatted\t Über-/Minus-stunden:\t$ergebnisformatiertt\t AbwesenheitID: $abwesenheitsidBack")
         }
 
         val endDatumParce = LocalDate.parse(endDatumStr)

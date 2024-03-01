@@ -1,6 +1,7 @@
 package Bericht
 
 
+import GuiElemente.GuiAusgabeFenster
 import HOST
 import PORT
 import userIdString
@@ -11,11 +12,11 @@ fun EintragBerichgtDB(bericht: String, eientragid: Int ) {
         val PROTOCOL = "jdbc:mysql"
 //        val HOST =     "localhost"
 //        val PORT =     3306
-        val DATABASE = "SA-Semesterarbeit-2023"
+        val DATABASE = "sa_semesterarbeit_2023"
         val OPTIONS =  "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
         val URL =      "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-        val USER =     "UserTest"
-        val PASSWORD = "admin"
+        val USER =     "root"
+        val PASSWORD = "SaZeiterfassung$"
 
         // Zu speichernde Daten
         val berichtId   =  0
@@ -43,8 +44,10 @@ fun EintragBerichgtDB(bericht: String, eientragid: Int ) {
 
         // SQL ausfuehren
         statement.executeUpdate(sql)
-        println("Daten in DB gespeichert.")
-    }
+        println("Bericht in DB gespeichert.")
+        GuiAusgabeFenster.ausgabeTextHinzufügen("Bericht in DB gespeichert." )
+
+}
 
 
 
