@@ -45,9 +45,9 @@ class GuiMenueAdmin{
                     buttonArchiv.apply {
                         prefWidth = 120.0
                                        },
-                    buttonVisieren.apply {
-                        prefWidth = 120.0
-                                         },
+//                    buttonVisieren.apply {
+//                        prefWidth = 120.0
+//                                         },
                     buttonErstellen.apply {
                         prefWidth = 120.0
                                           },

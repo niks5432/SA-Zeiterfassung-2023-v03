@@ -45,9 +45,9 @@ class GuiMenueUser{
                     buttonArchiv.apply {
                         prefWidth = 120.0
                                        },
-                    buttonVisieren.apply {
-                        prefWidth = 120.0
-                                         },
+//                    buttonVisieren.apply {
+//                        prefWidth = 120.0
+//                                         },
                     buttonLogOut.apply {
                         prefWidth = 120.0
                     }
