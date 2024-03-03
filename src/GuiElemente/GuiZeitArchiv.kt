@@ -26,7 +26,7 @@ object GuiZeitArchiv {
     private var startDatumLabel = Label("Geben Sie ein Startdatum ein")
     private var userIDLabel = Label("Geben Sie das User Id im Format ein")
     private var abwesenheitsIdLabel = Label("Geben Sie das Abwesenheit Id ein\n" +
-            "1 = Ferien, 2 = Krankheit, 3, Feiertag  ")
+            "1 = Ferien, 2 = Krankheit, 3 = Feiertag, 4 = Anwesend ")
     private var endDatumLabel = Label("Geben Sie ein Enddatum ein")
 
 
@@ -94,7 +94,7 @@ object GuiZeitArchiv {
         splitPane.apply {
             orientation = Orientation.HORIZONTAL
             items.addAll(vbox, GuiAusgabeFenster.vbox)
-            setDividerPositions(0.24 )
+            setDividerPositions(0.26 )
         }
 
 
@@ -182,13 +182,12 @@ object GuiZeitArchiv {
         }
 
 
-        buttonSuchen.setOnAction {
+        buttonSuchen.setOnAction {                  // Übergibt, die eingaben den Objekt-Variablen
             zeitArchiv.startDatumStr = startDatum.text
             zeitArchiv.endDatumStr = endDatum.text
             zeitArchiv.abfrageUserId = userid.text
-            println(startDatum.text)
             zeitArchiv.archiveAbfrage()
-            reset()
+            reset()                                               // setzt die eingabe fester wieder zurück
         }
         buttonZurückMenue.setOnAction {
             GuiAusgabeFenster.clear()

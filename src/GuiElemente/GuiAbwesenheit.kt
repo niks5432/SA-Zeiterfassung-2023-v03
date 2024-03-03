@@ -1,7 +1,7 @@
 package GuiElemente
 
 import Bericht.Bericht
-import Zeit.abwesenheit
+import Zeit.Abwesenheit
 import javafx.geometry.Insets
 import javafx.scene.control.*
 import javafx.scene.layout.HBox
@@ -29,21 +29,17 @@ object GuiAbwesenheit {
     private val buttonAbsenden = Button("Speichern")
     private val buttonBack = Button("Fenster schliessen")
     fun start(stage: Stage) {
-
-        val hboxGrund = HBox().apply {
+        val hboxGrund = HBox().apply {      // Damit die Elemente besser angeordnet werden können wurden verschiedene Layoutcontainer verwendet und entsprechend Formatiert
             spacing = 20.0
             with(children) {
                 addAll(
                     rbnKrank.apply {
-
                     },
                     rbnFeiertag.apply {
-
                     },
                 )
             }
         }
-
         val hboxDauer = HBox().apply {
             spacing = 20.0
             with(children) {
@@ -57,7 +53,6 @@ object GuiAbwesenheit {
                 )
             }
         }
-
         val hboxDatum = HBox().apply {
             spacing = 20.0
 //            padding = Insets(10.0, 10.0, 10.0, 10.0)
@@ -74,7 +69,6 @@ object GuiAbwesenheit {
                 )
             }
         }
-
         val hboxBtn = HBox().apply {
             spacing = 20.0
 //            padding = Insets(10.0, 10.0, 10.0, 10.0)
@@ -91,7 +85,6 @@ object GuiAbwesenheit {
                 )
             }
         }
-
         val vboxAll = VBox().apply {
             spacing = 10.0
             padding = Insets(10.0, 20.0, 10.0, 20.0)
@@ -111,16 +104,12 @@ object GuiAbwesenheit {
                 )
             }
         }
-
         rbnKrank.setOnAction {
-            println("1")
-            rbnGrund(rbnKrank)
+            rbnGrund(rbnKrank)                          // Damit die Umschalt zwischen den Radio Buttons geschieht
         }
         rbnFeiertag.setOnAction {
             rbnGrund(rbnFeiertag)
-
         }
-
         rbnHalbertag.setOnAction {
             rbnDauer(rbnHalbertag)
 
@@ -128,24 +117,21 @@ object GuiAbwesenheit {
         rbnGanzerTag.setOnAction {
             rbnDauer(rbnGanzerTag)
         }
-
         buttonAbsenden.setOnAction {
             stage.close()
-            abwesenheit()
+            Abwesenheit.abwesenheit()                  // Führt die Methode im Objekt aus
         }
         buttonBack.setOnAction {
             stage.close()
         }
-
-
         with(stage) {
             scene = javafx.scene.Scene(vboxAll, 400.0, 280.0)
             title = "Zeiterfassung"
             show()
         }
     }
-    private fun rbnGrund(rbn: RadioButton) {
-        if (rbn == rbnKrank && rbn.isSelected) rbnFeiertag.isSelected = false
+    private fun rbnGrund(rbn: RadioButton) {                                            // logik für die Umschaltung Der Radio Buttons
+        if (rbn == rbnKrank && rbn.isSelected) rbnFeiertag.isSelected = false           // Setzt Zustand auf False
         else if (rbn == rbnFeiertag && rbn.isSelected)  rbnKrank.isSelected = false
     }
 
@@ -155,6 +141,7 @@ object GuiAbwesenheit {
     }
 
     fun textTflReset() {
+        strDatum.text = ""
+        endDatum.text = ""
            }
-
     }

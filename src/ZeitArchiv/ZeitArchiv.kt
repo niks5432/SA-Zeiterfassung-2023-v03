@@ -15,31 +15,14 @@ class ZeitArchiv {
     var abwesenheitsId = 0
 
     fun archiveAbfrage() {
-
-//        println("Geben Sie ein Startdatum im Format (yyyy-MM-dd) ein")
-//        // Startdatum von der Konsole lesen
-//        val startDatumStr = readlnOrNull()
-        // Prüfen/Validierung des Datumsformats
         val startDatum = LocalDate.parse(startDatumStr)
-
-//        println("Geben Sie ein Enddatum im Format (yyyy-MM-dd) ein")
-//        // Enddatum von der Konsole lesen
-//        val endDatumStr = readlnOrNull()
-        // Prüfen/Validierung des Datumsformats
         val endDatum = LocalDate.parse(endDatumStr)
-
-        // Datenbankabfrage durchführen
         val archiveDatenListe = lesenArchivDB(abfrageUserId.toInt(), startDatum, endDatum, abwesenheitsId)
-
-//    println("Anzahl der Elemente in der Liste: ${archiveDatenListe.size}")
-
         val matrix = mutableListOf<MutableList<String>>()
-
         for (archiveDate in archiveDatenListe) {
             val rowData = archiveDate.split(" ")
             matrix.add(rowData.toMutableList())
         }
-
         var datumelem: String
         var startzeitelem: String
         var endzeitelem: String
@@ -72,18 +55,13 @@ class ZeitArchiv {
 
         val endDatumParce = LocalDate.parse(endDatumStr)
         val startDatumParce = LocalDate.parse(startDatumStr)
-
         var anzahlArbeitstage = 0
         anzahlArbeitstage = berechneArbeitstage(startDatumParce, endDatumParce)
-
         val totalArbeitszeit: Duration = Duration.ZERO
         val sollStundenAmTag: Duration = Duration.ofHours(8)
         val sollStundenAmTagAnzeige = 8
-
-
         val sollStundenAmTagInt = sollStundenAmTag.seconds.toInt()
         val totalSollStunden = sollStundenAmTagInt * anzahlArbeitstage / 3600
-
         val arbeitZeit = Duration.ofHours(sollStundenAmTagAnzeige.toLong() * anzahlArbeitstage)
         val minimumArbeitszeit: Duration = Duration.ofSeconds(1)
 

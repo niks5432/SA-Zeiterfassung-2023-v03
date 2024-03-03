@@ -10,27 +10,27 @@ import kotlin.math.absoluteValue
 // Allgemeine Funktionen
 
 
-fun splitString(string: String): List<String> {
+fun splitString(string: String): List<String> {                 // Trennt einen String  alles mit einen Leerzeichen und gibt es in der List stirng zurück
     val string = userDaten.split(" ")
     return string
 }
 
-fun formatiereZeit (dauer: Duration): String {
+fun formatiereZeit (dauer: Duration): String {                  // Formatiert Durration werte
     val stunden = dauer.toHours()
-    val minuten = dauer.toMinutesPart()
-    val sekunden = dauer.toSecondsPart()
+    val minuten = dauer.toMinutes()
+    val sekunden = dauer.toSeconds()
 
-    return "$stunden:$minuten:$sekunden"
+    return "$stunden:$minuten:$sekunden"                        // rückgabe der formatierten Werte
 }
 
-fun effektivearbeitsstundenamtag(startzeitelem: String, endzeitelem: String): Duration {
+fun effektivearbeitsstundenamtag(startzeitelem: String, endzeitelem: String): Duration {        // Von Entwickler Herr Luca
     val startzeitElemParced = LocalTime.parse(startzeitelem)
     val endzeitElemParced = LocalTime.parse(endzeitelem)
     val arbeitZeit = Duration.between(startzeitElemParced, endzeitElemParced)
     return arbeitZeit
 }
 
-fun minusuberstunden(startzeitelem: String, endzeitelem: String): Duration {
+fun minusuberstunden(startzeitelem: String, endzeitelem: String): Duration {                   // Von Entwickler Herr Luca
     val startzeitElemParced = LocalTime.parse(startzeitelem)
     val endzeitElemParced = LocalTime.parse(endzeitelem)
     val arbeitZeit = Duration.between(startzeitElemParced, endzeitElemParced)
@@ -50,7 +50,7 @@ fun minusuberstunden(startzeitelem: String, endzeitelem: String): Duration {
     }
 }
 
-fun berechneArbeitstage(startDatum: LocalDate, endDatum: LocalDate): Int {
+fun berechneArbeitstage(startDatum: LocalDate, endDatum: LocalDate): Int {                  // Von Entwickler Herr Luca
     // Arbeitstage zählen, ohne Wochenenden
     val anzahlTage = ChronoUnit.DAYS.between(startDatum, endDatum) + 1
     val anzahlTageInt = anzahlTage.toInt()
@@ -60,7 +60,7 @@ fun berechneArbeitstage(startDatum: LocalDate, endDatum: LocalDate): Int {
 }
 
 
-fun formatiereZeitArchiv(dauer: Duration): String {
+fun formatiereZeitArchiv(dauer: Duration): String {                                         // Von Entwickler Herr Luca
     val stunden = dauer.toHours().absoluteValue // Absolute Stunden, um negatives Vorzeichen zu entfernen
     val minuten = dauer.toMinutesPart().absoluteValue
     val sekunden = dauer.toSecondsPart().absoluteValue

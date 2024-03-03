@@ -7,7 +7,6 @@ import PORT
 import userIdString
 import java.sql.DriverManager
 
-
 fun EintragBerichgtDB(bericht: String, eientragid: Int ) {
         val PROTOCOL = "jdbc:mysql"
 //        val HOST =     "localhost"
@@ -18,17 +17,13 @@ fun EintragBerichgtDB(bericht: String, eientragid: Int ) {
         val USER =     "root"
         val PASSWORD = "SaZeiterfassung$"
 
-        // Zu speichernde Daten
         val berichtId   =  0
         val userId      = userIdString.toInt()
 
-        // Verbindung zur DB herstellen
         val connection= DriverManager.getConnection(URL, USER, PASSWORD)
 
-        // Statement erzeugen
         val statement = connection.createStatement()
 
-        // SQL erstellen um Daten in DB speichern
         val sql = """INSERT INTO Bericht (
                      berichtid,
                      eintragid,
@@ -39,15 +34,15 @@ fun EintragBerichgtDB(bericht: String, eientragid: Int ) {
                      '$eientragid',
                      '$userId',
                      '$bericht'
-
                  )"""
 
-        // SQL ausfuehren
         statement.executeUpdate(sql)
         println("Bericht in DB gespeichert.")
         GuiAusgabeFenster.ausgabeTextHinzufügen("Bericht in DB gespeichert." )
 
 }
+
+
 
 
 

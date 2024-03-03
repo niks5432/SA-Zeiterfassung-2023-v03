@@ -10,7 +10,6 @@ import java.sql.DriverManager
 
 fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, nachnameNew: String, emailNew: String, funktionNew: String, admin: Boolean) {
 
-// Database connection parameters
     val PROTOCOL = "jdbc:mysql"
 //    val HOST = "localhost"
 //    val PORT = 3306
@@ -20,14 +19,10 @@ fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, n
     val USER =     "root"
     val PASSWORD = "SaZeiterfassung$"
 
-// Verbindung zur DB herstellen
     val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-// Statement erzeugen
     val statement = connection.createStatement()
 
-
-// SQL erstellen um Daten in DB zu speichern
     val sql = """INSERT INTO Benutzer (
                      userid,
                      passwort,
@@ -44,13 +39,10 @@ fun eintragBenutzerDb(userIdNew: Int, passwortNew: String, vornameNew: String, n
                      '$emailNew',
                      '$funktionNew',
                      '$admin'
-
                  )"""
 
-// SQL ausführen
     statement.executeUpdate(sql)
     println("Daten in DB gespeichert.")
     GuiAusgabeFenster.ausgabeTextHinzufügen("Neuer Benutzer in DB gespeichert." )
-
 
 }

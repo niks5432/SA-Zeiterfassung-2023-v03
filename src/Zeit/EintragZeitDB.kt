@@ -35,17 +35,13 @@ fun eintragZeitDB(userId: Int, startzeit: LocalTime, endzeit: LocalTime, pausenz
     val USER =     "root"
     val PASSWORD = "SaZeiterfassung$"
 
-    // Zu speichernde Daten
     val eintragid       =  0
     val datum           =  LocalDate.now()
 
-    // Verbindung zur DB herstellen
     val connection= DriverManager.getConnection(URL, USER, PASSWORD)
 
-    // Statement erzeugen
     val statement = connection.createStatement()
 
-    // SQL erstellen um Daten in DB speichern
     val sql = """INSERT INTO Zeiterfassung (
                      eintragid,
                      userId,
@@ -66,14 +62,9 @@ fun eintragZeitDB(userId: Int, startzeit: LocalTime, endzeit: LocalTime, pausenz
                      '$zustandid'
                  )"""
 
-    // SQL ausfuehren
     statement.executeUpdate(sql)
     println("Daten in DB gespeichert.")
     GuiAusgabeFenster.ausgabeTextHinzufügen("Heutige Zeit in DB gespeichert." )
-
-
-
-// Zeilen ausgeben
 
 }
 

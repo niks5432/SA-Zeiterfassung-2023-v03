@@ -35,14 +35,11 @@ import java.time.LocalTime
     val USER =     "root"
     val PASSWORD = "SaZeiterfassung$"
 
-    // Zu speichernde Daten
     val eintragid       =  0
     val datum           =  LocalDate.now()
 
-    // Verbindung zur DB herstellen
     val connection= DriverManager.getConnection(URL, USER, PASSWORD)
 
-    // Statement erzeugen
     val statement = connection.createStatement()
 
         var aktuelesDatum = startDatum
@@ -50,7 +47,6 @@ import java.time.LocalTime
 
         while (!aktuelesDatum.isAfter(endDatum)) {
 
-        // SQL erstellen um Daten in DB speichern
             val sql = """INSERT INTO Zeiterfassung (
                          userId,
                          datum,
@@ -68,10 +64,6 @@ import java.time.LocalTime
                          '$abwesenheitsid',
                          '$zustandid'
                      )"""
-
-
-
-            // SQL ausfuehren
             statement.executeUpdate(sql)
 
             aktuelesDatum = aktuelesDatum.plusDays(1)
@@ -79,10 +71,6 @@ import java.time.LocalTime
 
     println("Daten in DB gespeichert.")
     GuiAusgabeFenster.ausgabeTextHinzufügen("Abwesenheit in DB gespeichert." )
-
-
-
-// Zeilen ausgeben
 
 }
 

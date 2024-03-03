@@ -3,6 +3,7 @@
 import GuiElemente.GuiLogIn
 import javafx.application.Application
 
+// Global Deklarierte Variablen damit diese im ganzen Projekt erreicht werden können
 var userDaten = ""
 var userIdString = ""
 var passwort = ""
@@ -21,7 +22,7 @@ val PORT =     3308
 
 fun main() {
     println("Hello World!")
-    Application.launch(GuiLogIn::class.java)
+    Application.launch(GuiLogIn::class.java)        // Starten der Anwendung
 
 }
 

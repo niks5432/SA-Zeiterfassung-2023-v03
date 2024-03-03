@@ -34,7 +34,7 @@ object GuiBenutzerErstellen {
 
     fun start(stage: Stage) {
 
-        val splitPane = SplitPane()
+        val splitPane = SplitPane()                                                         // Witerer Layoutcontainer welcher verwendet wurde
         val vbox = VBox().apply {
                 spacing = 10.0
                 padding = Insets(20.0, 15.0, 15.0, 10.0)
@@ -99,9 +99,7 @@ object GuiBenutzerErstellen {
                 }
             }
 
-
-
-        splitPane.apply {
+        splitPane.apply {                                                       // Formatierung des Layoutcontainer
             orientation = Orientation.HORIZONTAL
             items.addAll(vbox, GuiAusgabeFenster.vbox)
             setDividerPositions(0.605) // Set initial divider position
@@ -110,14 +108,13 @@ object GuiBenutzerErstellen {
         adminRbn.setOnAction {
             eintageAdmin(adminRbn)
         }
-
         nonAdminRbn.setOnAction {
             eintageAdmin(nonAdminRbn)
         }
 
         buttonBenutzerErstellen.setOnAction {
-            eintragBenutzerDb(newUserid, newUserPassword.text, newVorname.text, newNachname.text, newEmail.text, newFunktion.text, rbnAdmIs)
-            textTflReset()
+            eintragBenutzerDb(newUserid, newUserPassword.text, newVorname.text, newNachname.text, newEmail.text, newFunktion.text, rbnAdmIs)            // Übergibt die Parameter für den Datenbankeintrag
+            textTflReset()                                                                                                                              // Setzt die Eingabefelder wieder zurück
         }
         buttonZurückMenue.setOnAction {
             GuiAusgabeFenster.clear()
@@ -126,14 +123,12 @@ object GuiBenutzerErstellen {
             guiMenueAdmin.start(stage)
 
         }
-
-            with(stage) {
+        with(stage) {
                 scene = javafx.scene.Scene(splitPane, 700.0, 500.0)
                 title = "Zeiterfassung"
                 show()
             }
         }
-
     fun textTflReset() {
         newUserPassword.text = ""
         newVorname.text = ""
@@ -145,10 +140,12 @@ object GuiBenutzerErstellen {
     }
 
     private fun eintageAdmin(rbn: RadioButton) {
-        if (rbn == adminRbn && rbn.isSelected) {
-            nonAdminRbn.isSelected = false
+        if (rbn == adminRbn && rbn.isSelected) {                    // Steuert die umschaltung der Radio Buttons
+            rbnAdmIs = true                                         // Setzt den Zustand auf false welcher überprüft wird für den Datenbankeintrag
+            nonAdminRbn.isSelected = false                          // Schaltet den anderen Button auf false damit nich beide gleichzeitig ausgewählt sind
             println("Admin")
         } else if (rbn == nonAdminRbn && rbn.isSelected) {
+            rbnAdmIs = false
             adminRbn.isSelected = false
             println("kein Admin")
         }

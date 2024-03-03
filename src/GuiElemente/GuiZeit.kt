@@ -1,11 +1,11 @@
 package GuiElemente
 
+import ZeitAbfrage
 import javafx.geometry.Insets
 import javafx.scene.control.Button
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
-import zeiterfassungAbfrage
 
 object GuiZeit {
     val btnStart = Button("Zeiterfassung Start")
@@ -25,15 +25,12 @@ object GuiZeit {
                 addAll(
                     btnStart.apply {
                         prefWidth = 160.0
-//                        VBox.setMargin(this, Insets(30.0, 0.0, 0.0, 50.0))
                     },
                     btnEnde.apply {
                         prefWidth = 160.0
-//                        VBox.setMargin(this, Insets(-25.0, 0.0, 0.0, 270.0))
                     },
                     btnAbwesend.apply {
                         prefWidth = 160.0
-//                        VBox.setMargin(this, Insets(-0.0, 55.0, 0.0, 485.0))
                     }
                 )
             }
@@ -55,10 +52,8 @@ object GuiZeit {
             with(children) {
                 addAll(
                     btnZeiterfassungFlaeche.apply{
-//                        HBox.setMargin(this, Insets(0.0, 0.0, 0.0, 0.0))
                     },
                     btnBackFlaeche.apply{
-//                        HBox.setMargin(this, Insets(40.0, 270.0, 0.0, 0.0))
                     },
                 )
             }
@@ -68,27 +63,20 @@ object GuiZeit {
             val guiAbwesenheitStage = Stage()
             GuiAbwesenheit.start(guiAbwesenheitStage)
         }
-
         btnStart.setOnAction {
-            zeiterfassungAbfrage(true)
+            ZeitAbfrage.zeiterfassungAbfrage(true)          // zustand wird benötigt damit Logik den gedrückten Button unterscheiden kann
         }
-
         btnEnde.setOnAction {
-            zeiterfassungAbfrage(false)
+            ZeitAbfrage.zeiterfassungAbfrage(false)
         }
-
         btnBack.setOnAction {
             btnFlaecheZusammen.isVisible = false
             GuiAusgabeFenster.clear()
         }
-
     }
-
-
 
     fun wilkommen() {
         GuiAusgabeFenster.ausgabeTextHinzufügen("Menüpunk: Zeitmessung")
-    }
-
-
+    }                                          // Funktion für ausgabe AusgabeFenster
 }
+

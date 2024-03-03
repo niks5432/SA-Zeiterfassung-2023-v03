@@ -11,14 +11,8 @@ import javafx.stage.Stage
 object GuiBericht {
 
     val tagesBericht = TextArea()
-
-
     private val buttonAbsenden= Button("Absenden")
-
     private var titleLabel = Label("Bitte Tagesbericht eintragen")
-
-
-
     fun start(stage: Stage) {
 
         val vbox = VBox().apply {
@@ -46,9 +40,9 @@ object GuiBericht {
         }
 
         buttonAbsenden.setOnAction {
-            val heutigerBericht = Bericht()
-            heutigerBericht.bericht = tagesBericht.text
-            heutigerBericht.berichteintrag()
+            val heutigerBericht = Bericht()                     // Objekt wird erstellt
+            heutigerBericht.bericht = tagesBericht.text         // Text wird Objekt Variable übergeben
+            heutigerBericht.berichteintrag()                    // Objekt Methode wird ausgeführt
             stage.close()
 
 

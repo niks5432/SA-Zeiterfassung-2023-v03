@@ -14,7 +14,7 @@ import vorname
 import zustandZeitmessung
 
 class GuiMenueAdmin{
-    var root = BorderPane()
+    var root = BorderPane()                                         // Ein Weiterer Layoutcontainer mit welchem einfacher mehere Elemente verwaltet werden können
     var vbox = VBox()
     val buttonZeitmessung = Button("Zeitmessung")
     val buttonArchiv = Button("Stunden Archiv")
@@ -28,82 +28,75 @@ class GuiMenueAdmin{
          vbox = VBox().apply {
             spacing = 30.0
             padding = Insets(0.0, 0.0, 0.0, 70.0)
-            children.addAll(
+             children.addAll(
                 Label("Herzlich Wilkommen $vorname").apply {
                     font = Font.font(20.0)
                     style = "-fx-font-weight: bold"
                     VBox.setMargin(this, Insets(20.0, 0.0, 0.0, -40.0))
                                                            },
-                    Label("Menü").apply {
+                Label("Menü").apply {
                     font = Font.font(18.0)
                     style = "-fx-font-weight: bold"
                     VBox.setMargin(this, Insets(-20.0, 0.0, 0.0, 35.0))
                                             },
-                    buttonZeitmessung.apply {
+                buttonZeitmessung.apply {
                         prefWidth = 120.0
                                             },
-                    buttonArchiv.apply {
+                buttonArchiv.apply {
                         prefWidth = 120.0
                                        },
-//                    buttonVisieren.apply {
-//                        prefWidth = 120.0
-//                                         },
-                    buttonErstellen.apply {
+                buttonErstellen.apply {
                         prefWidth = 120.0
                                           },
-                    buttonLogOut.apply {
+                buttonLogOut.apply {
                         prefWidth = 120.0
                     }
                 )
             }
 
-         GuiZeit.btnZeitmessung()
-         GuiZeit.btnFlaecheZusammen.isVisible = false
+         GuiZeit.btnZeitmessung()                                   // Führt die Methode im Objekt aus
+         GuiZeit.btnFlaecheZusammen.isVisible = false               // Blendet ide erstelten Elemente aus
          GuiAusgabeFenster.ausgabeFensterAnzeigen()
-         GuiAusgabeFenster.ausgabeFenster.apply {
+         GuiAusgabeFenster.ausgabeFenster.apply {       // Formatiert das Ausgabefenster
              prefWidth = 400.0
              prefHeight = 360.0
          }
 
-        root = BorderPane().apply {
+         root = BorderPane().apply {                   // Fügt die einzelnen Elemente dem Layoutcontainer zu und ordnet sie an
             left = vbox
             right = GuiAusgabeFenster.vbox
             bottom = GuiZeit.btnFlaecheZusammen
         }
 
-        buttonZeitmessung.setOnAction {
-            GuiAusgabeFenster.clear()
-            GuiZeit.btnFlaecheZusammen.isVisible = true
-            GuiZeit.wilkommen()
+         buttonZeitmessung.setOnAction {                // Was beim Auslösen des Buttons geschieht
+            GuiAusgabeFenster.clear()                                // zurücksetzten des Ausgabe Fenster alles ausgegebene wird gelöscht
+            GuiZeit.btnFlaecheZusammen.isVisible = true             // Blendet die Elemente ein
+            GuiZeit.wilkommen()                                     // Führt ausgbe Mehtode aus
         }
-
-            buttonArchiv.setOnAction {
+         buttonArchiv.setOnAction {
                 GuiAusgabeFenster.clear()
-                stage.close()
+                stage.close()                                          // schlies das geöffnete Fenster
                 GuiZeitArchiv.start(stage)
             }
-            buttonVisieren.setOnAction {
-                GuiAusgabeFenster.clear()
-            }
-            buttonErstellen.setOnAction {
+         buttonErstellen.setOnAction {
                 GuiAusgabeFenster.clear()
                 stage.close()
                 GuiBenutzerErstellen.start(stage)
             }
-            buttonLogOut.setOnAction {
+         buttonLogOut.setOnAction {
                 GuiAusgabeFenster.clear()
-                angemeldet = false
+                angemeldet = false                                      // Setzt die Variable zurück
                 zustandZeitmessung = 0
                 println("Sie wurden Abgemeldet")
                 stage.close()
-                val loginGui = GuiLogIn()
+                val loginGui = GuiLogIn()                               // Erstellt aus der Klasse ein neues Objekt
                 loginGui.start(stage)
             }
 
-            with(stage) {
-                scene = javafx.scene.Scene(root, 700.0, 500.0)
-                title = "Zeiterfassung"
-                show()
+         with(stage) {
+             scene = javafx.scene.Scene(root, 700.0, 500.0)
+             title = "Zeiterfassung"
+             show()
             }
 
     }
